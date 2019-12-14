@@ -22,7 +22,7 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked }) => {
       />
       <button
         type="submit"
-        className="btn btn-light"
+        className="btn btn-primary"
         //!A && !B == !(A || B)
         //A || B == !(!A && !B)
         disabled={!(state.showCurrentWeather || state.showForecast)}

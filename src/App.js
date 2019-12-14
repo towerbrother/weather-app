@@ -13,7 +13,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      data: null, //what we get from OpenWeatherAPI
+      dataCurrent: null, //what we get from OpenWeatherAPI
+      dataForecast: null,
       err: null, //what we get from OpenWeatherAPI if something goes wrong
       loading: false, //??? not sure why needed this
       queryString: "", //input from user
@@ -36,7 +37,7 @@ class App extends React.Component {
             if (!res.ok) throw res;
             return res.json();
           })
-          .then(data => this.setState({ data, loading: false }))
+          .then(dataCurrent => this.setState({ dataCurrent, loading: false }))
           .catch(err => this.setState({ err, loading: false }));
       }
 
@@ -49,7 +50,7 @@ class App extends React.Component {
             if (!res.ok) throw res;
             return res.json();
           })
-          .then(data => this.setState({ data, loading: false }))
+          .then(dataForecast => this.setState({ dataForecast, loading: false }))
           .catch(err => this.setState({ err, loading: false }));
       }
     };
@@ -74,8 +75,8 @@ class App extends React.Component {
           onDisabled={this.handleButton}
         />
         {/* below a check to understand whether data arrived or not */}
-        {this.state.data && <Output data={this.state.data} />}
-        {/* {this.state.data && <div>Weather Data Here!</div>} */}
+        {/* {this.state.data && <Output data={this.state.data} />} */}
+        {this.state.data && <div>Weather Data Here!</div>}
       </div>
     );
   }
