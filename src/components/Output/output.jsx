@@ -14,7 +14,7 @@ class Output extends React.Component {
       Clouds: "wi-day-fog"
     };
 
-    const convertCelsius = temp => temp - 273.15;
+    const convertCelsius = temp => Math.round((temp - 273.15) * 10) / 10;
 
     const getWeatherIcon = iconId => {
       switch (true) {

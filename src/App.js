@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "weather-icons/css/weather-icons.css";
 import Form from "./components/Form/form";
 import Navbar from "./components/Navbar/navbar";
-// import Output from "./components/Output/output";
+import Output from "./components/Output/output";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
@@ -18,8 +18,7 @@ class App extends React.Component {
       loading: false, //??? not sure why needed this
       queryString: "", //input from user
       showCurrentWeather: true,
-      showForecast: false,
-      cnt: "" //&cnt=7
+      showForecast: false
     };
 
     this.handleChange = e => this.setState({ queryString: e.target.value });
@@ -30,7 +29,7 @@ class App extends React.Component {
       this.setState({ loading: true });
       if (this.state.showCurrentWeather) {
         fetch(
-          `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}${this.state.cnt}&APPID=${API}`
+          `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}&APPID=${API}`
         )
           //promise - it makes sure that these actions are performed one after the other
           .then(res => {
@@ -43,7 +42,7 @@ class App extends React.Component {
 
       if (this.state.showForecast) {
         fetch(
-          `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}${this.state.cnt}&APPID=${API}`
+          `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${this.state.queryString}&APPID=${API}`
         )
           //promise - it makes sure that these actions are performed one after the other
           .then(res => {
@@ -72,10 +71,11 @@ class App extends React.Component {
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
           onBoxChecked={this.handleBoxChecked}
+          onDisabled={this.handleButton}
         />
         {/* below a check to understand whether data arrived or not */}
-        {/* <Output data={this.state.data} weatherIcon={this.state.icon} /> */}
-        {this.state.data && <div>Weather Data Here!</div>}
+        {this.state.data && <Output data={this.state.data} />}
+        {/* {this.state.data && <div>Weather Data Here!</div>} */}
       </div>
     );
   }
