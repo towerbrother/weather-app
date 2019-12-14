@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "weather-icons/css/weather-icons.css";
 import Form from "./components/Form/form";
 import Navbar from "./components/Navbar/navbar";
-import Output from "./components/Output/output";
+import Output from "./components/Weather-Card/weather-card";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
@@ -27,7 +27,9 @@ class App extends React.Component {
     this.handleSubmit = e => {
       //prevent the full page refresh that happens by default in the browser
       e.preventDefault();
-      this.setState({ loading: true });
+      this.setState({
+        loading: this.state.showCurrentWeather + this.state.showForecast
+      });
       if (this.state.showCurrentWeather) {
         fetch(
           `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}&APPID=${API}`
@@ -38,7 +40,9 @@ class App extends React.Component {
             return res.json();
           })
           .then(dataCurrent => this.setState({ dataCurrent, loading: false }))
-          .catch(err => this.setState({ err, loading: false }));
+          .catch(err =>
+            this.setState({ err, loading: this.state.loading - 1 })
+          );
       }
 
       if (this.state.showForecast) {
@@ -51,7 +55,9 @@ class App extends React.Component {
             return res.json();
           })
           .then(dataForecast => this.setState({ dataForecast, loading: false }))
-          .catch(err => this.setState({ err, loading: false }));
+          .catch(err =>
+            this.setState({ err, loading: this.state.loading - 1 })
+          );
       }
     };
 
@@ -75,8 +81,13 @@ class App extends React.Component {
           onDisabled={this.handleButton}
         />
         {/* below a check to understand whether data arrived or not */}
-        {/* {this.state.data && <Output data={this.state.data} />} */}
-        {this.state.data && <div>Weather Data Here!</div>}
+        {(this.state.dataCurrent || this.state.dataForecast) && (
+          <Output
+            dataCurrent={this.state.dataCurrent}
+            dataForecast={this.state.dataForecast}
+          />
+        )}
+        {/* {this.state.data && <div>Weather Data Here!</div>} */}
       </div>
     );
   }

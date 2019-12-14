@@ -2,7 +2,7 @@ import React from "react";
 
 class Output extends React.Component {
   render() {
-    const { data } = this.props;
+    const { dataCurrent, dataForecast } = this.props;
 
     const weatherIcon = {
       Thunderstorm: "wi-thunderstorm",
@@ -38,17 +38,23 @@ class Output extends React.Component {
     return (
       <div className="container">
         <h2 className="p-2">
-          {data.name}, {data.sys.country}
+          {dataCurrent.name}, {dataCurrent.sys.country}
         </h2>
         <h5 className="p-2">
           <i
-            className={`wi ${getWeatherIcon(data.weather[0].id)} display-1`}
+            className={`wi ${getWeatherIcon(
+              dataCurrent.weather[0].id
+            )} display-1`}
           ></i>
         </h5>
-        <h1 className="p-2">{convertCelsius(data.main.temp)}&deg;</h1>
-        <span className="px-4">min: {convertCelsius(data.main.temp_min)}</span>
-        <span className="px-4">max: {convertCelsius(data.main.temp_max)}</span>
-        <h4 className="p-2">{data.weather[0].description}</h4>
+        <h1 className="p-2">{convertCelsius(dataCurrent.main.temp)}&deg;</h1>
+        <span className="px-4">
+          min: {convertCelsius(dataCurrent.main.temp_min)}
+        </span>
+        <span className="px-4">
+          max: {convertCelsius(dataCurrent.main.temp_max)}
+        </span>
+        <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
       </div>
     );
   }

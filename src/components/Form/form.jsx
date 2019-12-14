@@ -25,7 +25,10 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked }) => {
         className="btn btn-primary"
         //!A && !B == !(A || B)
         //A || B == !(!A && !B)
-        disabled={!(state.showCurrentWeather || state.showForecast)}
+        disabled={
+          !(state.showCurrentWeather || state.showForecast) ||
+          !state.queryString
+        }
       >
         Search
       </button>
