@@ -1,7 +1,10 @@
 import React from "react";
 import "./App.css";
-import Form from "./components/Form";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "weather-icons/css/weather-icons.css";
+import Form from "./components/Form/form";
 import Navbar from "./components/Navbar/navbar";
+// import Output from "./components/Output/output";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
@@ -10,25 +13,52 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      data: null,
-      err: null,
-      loading: false,
-      queryString: ""
+      data: null, //what we get from OpenWeatherAPI
+      err: null, //what we get from OpenWeatherAPI if something goes wrong
+      loading: false, //??? not sure why needed this
+      queryString: "", //input from user
+      showCurrentWeather: true,
+      showForecast: false,
+      cnt: "" //&cnt=7
     };
 
-    this.onChange = e => this.setState({ queryString: e.target.value });
-    this.onSubmit = e => {
+    this.handleChange = e => this.setState({ queryString: e.target.value });
+
+    this.handleSubmit = e => {
+      //prevent the full page refresh that happens by default in the browser
       e.preventDefault();
       this.setState({ loading: true });
-      fetch(
-        `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}&APPID=${API}`
-      )
-        .then(res => {
-          if (!res.ok) throw res;
-          return res.json();
-        })
-        .then(data => this.setState({ data, loading: false }))
-        .catch(err => this.setState({ err, loading: false }));
+      if (this.state.showCurrentWeather) {
+        fetch(
+          `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}${this.state.cnt}&APPID=${API}`
+        )
+          //promise - it makes sure that these actions are performed one after the other
+          .then(res => {
+            if (!res.ok) throw res;
+            return res.json();
+          })
+          .then(data => this.setState({ data, loading: false }))
+          .catch(err => this.setState({ err, loading: false }));
+      }
+
+      if (this.state.showForecast) {
+        fetch(
+          `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}${this.state.cnt}&APPID=${API}`
+        )
+          //promise - it makes sure that these actions are performed one after the other
+          .then(res => {
+            if (!res.ok) throw res;
+            return res.json();
+          })
+          .then(data => this.setState({ data, loading: false }))
+          .catch(err => this.setState({ err, loading: false }));
+      }
+    };
+
+    this.handleBoxChecked = event => {
+      // event.preventDefault();
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
+      this.setState({ [event.target.id]: !this.state[event.target.id] });
     };
   }
 
@@ -37,10 +67,14 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <Form
-          queryString={this.state.queryString}
-          onChange={this.onChange}
-          onSubmit={this.onSubmit}
+          //these attributes are passed as props to the Form component
+          state={this.state}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+          onBoxChecked={this.handleBoxChecked}
         />
+        {/* below a check to understand whether data arrived or not */}
+        {/* <Output data={this.state.data} weatherIcon={this.state.icon} /> */}
         {this.state.data && <div>Weather Data Here!</div>}
       </div>
     );
