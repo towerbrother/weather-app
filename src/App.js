@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "weather-icons/css/weather-icons.css";
 import Form from "./components/Form/form";
 import Navbar from "./components/Navbar/navbar";
-import Output from "./components/Weather-Card/weather-card";
+import WeatherCard from "./components/Weather-Card/weatherCard";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
@@ -13,11 +13,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      dataCurrent: null, //what we get from OpenWeatherAPI
+      dataCurrent: null,
       dataForecast: null,
-      err: null, //what we get from OpenWeatherAPI if something goes wrong
-      loading: false, //??? not sure why needed this
-      queryString: "", //input from user
+      err: null,
+      loading: false,
+      queryString: "",
       showCurrentWeather: true,
       showForecast: false
     };
@@ -65,6 +65,7 @@ class App extends React.Component {
       // event.preventDefault();
       //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
       this.setState({ [event.target.id]: !this.state[event.target.id] });
+      console.log(event.target);
     };
   }
 
@@ -81,13 +82,12 @@ class App extends React.Component {
           onDisabled={this.handleButton}
         />
         {/* below a check to understand whether data arrived or not */}
-        {(this.state.dataCurrent || this.state.dataForecast) && (
-          <Output
+        {this.state.dataCurrent && !this.state.dataForecast && (
+          <WeatherCard
             dataCurrent={this.state.dataCurrent}
             dataForecast={this.state.dataForecast}
           />
         )}
-        {/* {this.state.data && <div>Weather Data Here!</div>} */}
       </div>
     );
   }

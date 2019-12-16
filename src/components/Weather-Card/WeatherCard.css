@@ -1,0 +1,15 @@
+.current {
+  display: block;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10%;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 140px));
+  max-width: 80%;
+}
+
+.grid-item {
+  height: 200px;
+  width: 100px;
+}
