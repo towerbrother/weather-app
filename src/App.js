@@ -19,7 +19,8 @@ class App extends React.Component {
       loading: false,
       queryString: "",
       showCurrentWeather: true,
-      showForecast: false
+      showForecast: false,
+      unitMeasure: "metric"
     };
 
     this.handleChange = e => this.setState({ queryString: e.target.value });
@@ -65,6 +66,10 @@ class App extends React.Component {
       // event.preventDefault();
       //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
       this.setState({ [event.target.id]: !this.state[event.target.id] });
+    };
+
+    this.handleRadioChecked = event => {
+      this.setState({ unitMeasure: event.target.value });
       console.log(event.target);
     };
   }
@@ -79,6 +84,7 @@ class App extends React.Component {
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
           onBoxChecked={this.handleBoxChecked}
+          onRadioChecked={this.handleRadioChecked}
           onDisabled={this.handleButton}
         />
         {/* below a check to understand whether data arrived or not */}

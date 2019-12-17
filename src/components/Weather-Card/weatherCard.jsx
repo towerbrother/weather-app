@@ -19,7 +19,7 @@ const WeatherCard = props => {
 
   const convertCelsius = temp => Math.round((temp - 273.15) * 10) / 10;
 
-  // const convertFahrenheit = celsius => celsius * 1.8 + 32;
+  const convertFahrenheit = celsius => celsius * 1.8 + 32;
 
   const getWeatherIcon = iconId => {
     switch (true) {
@@ -52,12 +52,12 @@ const WeatherCard = props => {
           )} display-1`}
         ></i>
       </h5>
-      <h2 className="p-2">{convertCelsius(dataCurrent.main.temp)}&deg;</h2>
+      <h2 className="p-2">{convertCelsius(dataCurrent.main.temp)}&deg;C</h2>
       <span className="px-4">
-        min: {convertCelsius(dataCurrent.main.temp_min)}
+        min: {convertCelsius(dataCurrent.main.temp_min)}&deg;C
       </span>
       <span className="px-4">
-        max: {convertCelsius(dataCurrent.main.temp_max)}
+        max: {convertCelsius(dataCurrent.main.temp_max)}&deg;C
       </span>
       <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
     </div>

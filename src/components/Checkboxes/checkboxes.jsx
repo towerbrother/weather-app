@@ -3,7 +3,7 @@ import "./Checkboxes.css";
 import Input from "../Input/input";
 
 const Checkboxes = props => (
-  <div className={props.className}>
+  <div className="checkbox">
     <Input
       label="Current Weather"
       id="showCurrentWeather"

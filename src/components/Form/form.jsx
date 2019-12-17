@@ -1,10 +1,10 @@
 import React from "react";
 import Input from "../Input/input";
 import Checkboxes from "../Checkboxes/checkboxes";
-import RadioButton from "../RadioButton/radioButton";
+import Radio from "../Radio/radio";
 import "./Form.css";
 
-const Form = ({ onChange, onSubmit, state, onBoxChecked }) => {
+const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
   return (
     <div className="form">
       <form className="form-inline" onSubmit={onSubmit}>
@@ -22,7 +22,11 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked }) => {
           onBoxChecked={onBoxChecked}
           type="checkbox"
         />
-        <RadioButton onBoxChecked={onBoxChecked} type="radio" />
+        <Radio
+          onRadioChecked={onRadioChecked}
+          unitMeasure={state.unitMeasure}
+          type="radio"
+        />
         <button
           type="submit"
           className="btn btn-primary"

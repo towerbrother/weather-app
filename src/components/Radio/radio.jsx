@@ -1,28 +1,29 @@
 import React from "react";
 import Input from "../Input/input";
 
-const RadioButton = props => {
+const Radio = props => {
   return (
     <div className="radio">
       <Input
         label="Metric"
         id="metric"
-        name="measure"
+        name="unitMeasure"
         value="metric"
         type={props.type}
-        onChange={props.onBoxChecked}
-        checked
+        onChange={props.onRadioChecked}
+        checked={props.unitMeasure === "metric"}
       />
       <Input
         label="Imperial"
         id="imperial"
-        name="measure"
+        name="unitMeasure"
         value="imperial"
         type={props.type}
-        onChange={props.onBoxChecked}
+        onChange={props.onRadioChecked}
+        checked={props.unitMeasure === "imperial"}
       />
     </div>
   );
 };
 
-export default RadioButton;
+export default Radio;
