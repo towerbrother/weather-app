@@ -17,8 +17,8 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
           value={state.queryString}
         />
         <Checkboxes
-          showCurrentWeather={state.showCurrentWeather}
-          showForecastWeather={state.showForecastWeather}
+          showCurrent={state.showCurrent}
+          showForecast={state.showForecast}
           onBoxChecked={onBoxChecked}
           type="checkbox"
         />
@@ -33,8 +33,7 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
           //!A && !B == !(A || B)
           //A || B == !(!A && !B)
           disabled={
-            !(state.showCurrentWeather || state.showForecast) ||
-            !state.queryString
+            !(state.showCurrent || state.showForecast) || !state.queryString
             //filter grey scale / opacity - class that you remove and add + transition
           }
         >

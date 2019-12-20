@@ -6,11 +6,11 @@ const Checkboxes = props => (
   <div className="checkbox">
     <Input
       label="Current Weather"
-      id="showCurrentWeather"
+      id="showCurrent"
       className="form-check-input"
       type={props.type}
       onChange={props.onBoxChecked}
-      checked={props.showCurrentWeather}
+      checked={props.showCurrent}
     />
     <Input
       label="Weather Forecast"

@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "weather-icons/css/weather-icons.css";
 import Form from "./components/Form/form";
 import Navbar from "./components/Navbar/navbar";
-import WeatherCard from "./components/Weather-Card/weatherCard";
+import Weather from "./components/Weather/weather";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
@@ -18,7 +18,7 @@ class App extends React.Component {
       err: null,
       loading: false,
       queryString: "",
-      showCurrentWeather: true,
+      showCurrent: true,
       showForecast: false,
       unitMeasure: "metric"
     };
@@ -31,7 +31,8 @@ class App extends React.Component {
       this.setState({
         loading: this.state.showCurrentWeather + this.state.showForecast
       });
-      if (this.state.showCurrentWeather) {
+
+      if (this.state.showCurrent) {
         fetch(
           `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}&APPID=${API}`
         )
@@ -70,7 +71,6 @@ class App extends React.Component {
 
     this.handleRadioChecked = event => {
       this.setState({ unitMeasure: event.target.value });
-      console.log(event.target);
     };
   }
 
@@ -88,10 +88,11 @@ class App extends React.Component {
           onDisabled={this.handleButton}
         />
         {/* below a check to understand whether data arrived or not */}
-        {this.state.dataCurrent && !this.state.dataForecast && (
-          <WeatherCard
+        {(this.state.dataCurrent || this.state.dataForecast) && (
+          <Weather
             dataCurrent={this.state.dataCurrent}
             dataForecast={this.state.dataForecast}
+            unitMeasure={this.state.unitMeasure}
           />
         )}
       </div>

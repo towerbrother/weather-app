@@ -1,0 +1,27 @@
+.current {
+  display: block;
+}
+
+/* .forecast {
+  display: inline-block;
+}
+
+.grid-item {
+  border: solid black;
+  border-radius: 5%;
+  margin-bottom: 5px;
+} */
+
+.grid-container {
+  display: grid;
+  grid-gap: 2%;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: auto;
+  max-width: 100%;
+}
+
+.grid-item {
+  border: solid black;
+  border-radius: 5%;
+  margin: 2%;
+}
