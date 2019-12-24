@@ -2,15 +2,9 @@
   display: block;
 }
 
-/* .forecast {
-  display: inline-block;
+.city {
+  margin-bottom: 2%;
 }
-
-.grid-item {
-  border: solid black;
-  border-radius: 5%;
-  margin-bottom: 5px;
-} */
 
 .grid-container {
   display: grid;

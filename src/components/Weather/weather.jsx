@@ -4,6 +4,10 @@ import "./Weather.css";
 const Weather = props => {
   const { dataCurrent, dataForecast, unitMeasure } = props;
 
+  const today = new Date();
+  const dateToday =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
   const weatherIcon = {
     Thunderstorm: "wi-thunderstorm",
     Drizzle: "wi-sleet",
@@ -64,21 +68,29 @@ const Weather = props => {
       );
     } else if (!dataCurrent && dataForecast) {
       return (
-        <div className="grid-container">
-          <h1 className="p-2">
+        <>
+          <h1 className="city">
             {dataForecast.city.name}, {dataForecast.city.country}
           </h1>
-          {dataForecast.list.map(item => (
-            <div key={item.dt} className="grid-item">
-              <h4 className="p-2">{item.dt_txt}</h4>
-              <h5 className="p-2">
-                <i className={`wi ${getWeatherIcon(item.weather[0].id)}`}></i>
-              </h5>
-              <h3 className="p-2">{convertCelsius(item.main.temp)}&deg;C</h3>
-              <h4 className="p-2">{item.weather[0].description}</h4>
-            </div>
-          ))}
-        </div>
+          <div className="grid-container">
+            {dataForecast.list
+              .filter(item => dateToday !== item.dt_txt.slice(0, 10))
+              .map(item => (
+                <div key={item.dt} className="grid-item">
+                  <h4 className="p-2">{item.dt_txt}</h4>
+                  <h5 className="p-2">
+                    <i
+                      className={`wi ${getWeatherIcon(item.weather[0].id)}`}
+                    ></i>
+                  </h5>
+                  <h3 className="p-2">
+                    {convertCelsius(item.main.temp)}&deg;C
+                  </h3>
+                  <h4 className="p-2">{item.weather[0].description}</h4>
+                </div>
+              ))}
+          </div>
+        </>
       );
     } else {
       // current && forecast
