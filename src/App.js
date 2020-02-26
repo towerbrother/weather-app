@@ -1,13 +1,11 @@
 import React from "react";
-import "./App.css";
+import Form from "./components/Form/form";
+import Weather from "./components/Weather/weather";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "weather-icons/css/weather-icons.css";
-import Form from "./components/Form/form";
-import Navbar from "./components/Navbar/navbar";
-import Weather from "./components/Weather/weather";
+import "./App.css";
 
 const API = "f9b82988a14039290e02b95f5e395184";
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +24,6 @@ class App extends React.Component {
     this.handleChange = e => this.setState({ queryString: e.target.value });
 
     this.handleSubmit = e => {
-      //prevent the full page refresh that happens by default in the browser
       e.preventDefault();
       this.setState({
         loading: this.state.showCurrentWeather + this.state.showForecast
@@ -36,7 +33,6 @@ class App extends React.Component {
         fetch(
           `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}&APPID=${API}`
         )
-          //promise - it makes sure that these actions are performed one after the other
           .then(res => {
             if (!res.ok) throw res;
             return res.json();
@@ -51,7 +47,6 @@ class App extends React.Component {
         fetch(
           `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${this.state.queryString}&APPID=${API}`
         )
-          //promise - it makes sure that these actions are performed one after the other
           .then(res => {
             if (!res.ok) throw res;
             return res.json();
@@ -77,9 +72,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
         <Form
-          //these attributes are passed as props to the Form component
           state={this.state}
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
@@ -87,7 +80,6 @@ class App extends React.Component {
           onRadioChecked={this.handleRadioChecked}
           onDisabled={this.handleButton}
         />
-        {/* below a check to understand whether data arrived or not */}
         {(this.state.dataCurrent || this.state.dataForecast) && (
           <Weather
             dataCurrent={this.state.dataCurrent}

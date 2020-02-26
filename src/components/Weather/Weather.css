@@ -1,9 +1,16 @@
-.current {
+.current-weather {
   display: block;
+  color: #b6c3d8;
 }
 
 .city {
   margin-bottom: 2%;
+  color: #b6c3d8;
+}
+
+.forecast-title {
+  padding: 2px;
+  color: #b6c3d8;
 }
 
 .grid-container {
@@ -12,10 +19,11 @@
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: auto;
   max-width: 100%;
+  color: #b6c3d8;
 }
 
 .grid-item {
-  border: solid black;
+  border: solid #b6c3d8;
   border-radius: 5%;
   margin: 2%;
 }

@@ -1,0 +1,26 @@
+.button {
+  color: #b6c3d8;
+  border-color: #b6c3d8;
+  background-color: transparent;
+  border-radius: 5%;
+  font-size: 1.6em;
+}
+
+#city {
+  background-color: transparent;
+  color: #b6c3d8;
+  font-size: 1.5em;
+  border: none;
+  border-bottom: 2px solid #b6c3d8;
+  margin: 2%;
+}
+
+#city :focus {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+::placeholder {
+  color: #b6c3d8;
+  font-size: 1.5em;
+}

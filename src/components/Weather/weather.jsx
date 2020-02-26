@@ -45,7 +45,7 @@ const Weather = props => {
   if (unitMeasure === "metric") {
     if (dataCurrent && !dataForecast) {
       return (
-        <div className="current">
+        <div className="current-weather">
           <h1 className="p-2">
             {dataCurrent.name}, {dataCurrent.sys.country}
           </h1>
@@ -95,7 +95,7 @@ const Weather = props => {
     } else {
       return (
         <>
-          <div className="current">
+          <div className="current-weather">
             <h1 className="p-2">
               {dataCurrent.name}, {dataCurrent.sys.country}
             </h1>
@@ -117,8 +117,8 @@ const Weather = props => {
             </span>
             <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
           </div>
-          <div className="forecast">
-            <h1 className="p-2">Weather Forecast</h1>
+          <div className="forecast-weather">
+            <h1 className="forecast-title">Weather Forecast</h1>
             <div className="grid-container">
               {dataForecast.list
                 .filter(item => dateToday !== item.dt_txt.slice(0, 10))
@@ -144,7 +144,7 @@ const Weather = props => {
   } else {
     if (dataCurrent && !dataForecast) {
       return (
-        <div className="current">
+        <div className="current-weather">
           <h1 className="p-2">
             {dataCurrent.name}, {dataCurrent.sys.country}
           </h1>
@@ -198,7 +198,7 @@ const Weather = props => {
     } else {
       return (
         <>
-          <div className="current">
+          <div className="current-weather">
             <h1 className="p-2">
               {dataCurrent.name}, {dataCurrent.sys.country}
             </h1>
@@ -225,7 +225,7 @@ const Weather = props => {
             <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
           </div>
           <div className="forecast">
-            <h1 className="p-2">Weather Forecast</h1>
+            <h1 className="forecast-title">Weather Forecast</h1>
             <div className="grid-container">
               {dataForecast.list
                 .filter(item => dateToday !== item.dt_txt.slice(0, 10))

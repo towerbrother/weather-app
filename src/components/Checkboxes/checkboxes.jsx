@@ -1,21 +1,20 @@
 import React from "react";
-import "./Checkboxes.css";
 import Input from "../Input/input";
 
 const Checkboxes = props => (
   <div className="checkbox">
     <Input
-      label="Current Weather"
+      label="Current"
       id="showCurrent"
-      className="form-check-input"
+      className="current"
       type={props.type}
       onChange={props.onBoxChecked}
       checked={props.showCurrent}
     />
     <Input
-      label="Weather Forecast"
+      label="Forecast"
       id="showForecast"
-      className="form-check-input"
+      className="forecast"
       type={props.type}
       onChange={props.onBoxChecked}
       checked={props.showForecast}

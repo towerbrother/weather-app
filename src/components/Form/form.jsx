@@ -7,15 +7,26 @@ import "./Form.css";
 const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
   return (
     <div className="form">
-      <form className="form-inline" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <Input
-          label="City?"
+          label=""
           id="city"
           type="text"
-          placeholder="Enter city"
+          placeholder="City..."
           onChange={onChange}
           value={state.queryString}
         />
+        <button
+          type="submit"
+          className="button"
+          //!A && !B == !(A || B)
+          //A || B == !(!A && !B)
+          disabled={
+            !(state.showCurrent || state.showForecast) || !state.queryString
+          }
+        >
+          Get Weather
+        </button>
         <Checkboxes
           showCurrent={state.showCurrent}
           showForecast={state.showForecast}
@@ -27,18 +38,6 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
           unitMeasure={state.unitMeasure}
           type="radio"
         />
-        <button
-          type="submit"
-          className="btn btn-primary"
-          //!A && !B == !(A || B)
-          //A || B == !(!A && !B)
-          disabled={
-            !(state.showCurrent || state.showForecast) || !state.queryString
-            //filter grey scale / opacity - class that you remove and add + transition
-          }
-        >
-          Search
-        </button>
       </form>
     </div>
   );

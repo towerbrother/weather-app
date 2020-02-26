@@ -1,0 +1,10 @@
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+  margin: 20px;
+}
+
+label {
+  color: #b6c3d8;
+  font-size: 24px;
+}
