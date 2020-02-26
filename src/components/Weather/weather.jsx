@@ -42,30 +42,63 @@ const Weather = props => {
   const convertFahrenheit = celsius =>
     Math.round((celsius * 1.8 + 32) * 10) / 10;
 
+  const displayCurrentMetric = () => {
+    return (
+      <div className="current-weather">
+        <h1 className="p-2">
+          {dataCurrent.name}, {dataCurrent.sys.country}
+        </h1>
+        <h5 className="p-2">
+          <i
+            className={`wi ${getWeatherIcon(
+              dataCurrent.weather[0].id
+            )} display-1`}
+          ></i>
+        </h5>
+        <h2 className="p-2">{convertCelsius(dataCurrent.main.temp)}&deg;C</h2>
+        <span className="px-4">
+          min: {convertCelsius(dataCurrent.main.temp_min)}&deg;C
+        </span>
+        <span className="px-4">
+          max: {convertCelsius(dataCurrent.main.temp_max)}&deg;C
+        </span>
+        <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
+      </div>
+    );
+  };
+
+  const displayCurrentFahrenheit = () => {
+    return (
+      <div className="current-weather">
+        <h1 className="p-2">
+          {dataCurrent.name}, {dataCurrent.sys.country}
+        </h1>
+        <h5 className="p-2">
+          <i
+            className={`wi ${getWeatherIcon(
+              dataCurrent.weather[0].id
+            )} display-1`}
+          ></i>
+        </h5>
+        <h2 className="p-2">
+          {convertFahrenheit(convertCelsius(dataCurrent.main.temp))}&deg;F
+        </h2>
+        <span className="px-4">
+          min: {convertFahrenheit(convertCelsius(dataCurrent.main.temp_min))}
+          &deg;F
+        </span>
+        <span className="px-4">
+          max: {convertFahrenheit(convertCelsius(dataCurrent.main.temp_max))}
+          &deg;F
+        </span>
+        <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
+      </div>
+    );
+  };
+
   if (unitMeasure === "metric") {
     if (dataCurrent && !dataForecast) {
-      return (
-        <div className="current-weather">
-          <h1 className="p-2">
-            {dataCurrent.name}, {dataCurrent.sys.country}
-          </h1>
-          <h5 className="p-2">
-            <i
-              className={`wi ${getWeatherIcon(
-                dataCurrent.weather[0].id
-              )} display-1`}
-            ></i>
-          </h5>
-          <h2 className="p-2">{convertCelsius(dataCurrent.main.temp)}&deg;C</h2>
-          <span className="px-4">
-            min: {convertCelsius(dataCurrent.main.temp_min)}&deg;C
-          </span>
-          <span className="px-4">
-            max: {convertCelsius(dataCurrent.main.temp_max)}&deg;C
-          </span>
-          <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
-        </div>
-      );
+      return displayCurrentMetric();
     } else if (!dataCurrent && dataForecast) {
       return (
         <div className="forecast">
@@ -95,28 +128,7 @@ const Weather = props => {
     } else {
       return (
         <>
-          <div className="current-weather">
-            <h1 className="p-2">
-              {dataCurrent.name}, {dataCurrent.sys.country}
-            </h1>
-            <h5 className="p-2">
-              <i
-                className={`wi ${getWeatherIcon(
-                  dataCurrent.weather[0].id
-                )} display-1`}
-              ></i>
-            </h5>
-            <h2 className="p-2">
-              {convertCelsius(dataCurrent.main.temp)}&deg;C
-            </h2>
-            <span className="px-4">
-              min: {convertCelsius(dataCurrent.main.temp_min)}&deg;C
-            </span>
-            <span className="px-4">
-              max: {convertCelsius(dataCurrent.main.temp_max)}&deg;C
-            </span>
-            <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
-          </div>
+          {displayCurrentMetric()}
           <div className="forecast-weather">
             <h1 className="forecast-title">Weather Forecast</h1>
             <div className="grid-container">
@@ -143,32 +155,7 @@ const Weather = props => {
     }
   } else {
     if (dataCurrent && !dataForecast) {
-      return (
-        <div className="current-weather">
-          <h1 className="p-2">
-            {dataCurrent.name}, {dataCurrent.sys.country}
-          </h1>
-          <h5 className="p-2">
-            <i
-              className={`wi ${getWeatherIcon(
-                dataCurrent.weather[0].id
-              )} display-1`}
-            ></i>
-          </h5>
-          <h2 className="p-2">
-            {convertFahrenheit(convertCelsius(dataCurrent.main.temp))}&deg;F
-          </h2>
-          <span className="px-4">
-            min: {convertFahrenheit(convertCelsius(dataCurrent.main.temp_min))}
-            &deg;F
-          </span>
-          <span className="px-4">
-            max: {convertFahrenheit(convertCelsius(dataCurrent.main.temp_max))}
-            &deg;F
-          </span>
-          <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
-        </div>
-      );
+      return displayCurrentFahrenheit();
     } else if (!dataCurrent && dataForecast) {
       return (
         <div className="forecast">
@@ -198,32 +185,7 @@ const Weather = props => {
     } else {
       return (
         <>
-          <div className="current-weather">
-            <h1 className="p-2">
-              {dataCurrent.name}, {dataCurrent.sys.country}
-            </h1>
-            <h5 className="p-2">
-              <i
-                className={`wi ${getWeatherIcon(
-                  dataCurrent.weather[0].id
-                )} display-1`}
-              ></i>
-            </h5>
-            <h2 className="p-2">
-              {convertFahrenheit(convertCelsius(dataCurrent.main.temp))}&deg;F
-            </h2>
-            <span className="px-4">
-              min:{" "}
-              {convertFahrenheit(convertCelsius(dataCurrent.main.temp_min))}
-              &deg;F
-            </span>
-            <span className="px-4">
-              max:{" "}
-              {convertFahrenheit(convertCelsius(dataCurrent.main.temp_max))}
-              &deg;F
-            </span>
-            <h4 className="p-2">{dataCurrent.weather[0].description}</h4>
-          </div>
+          {displayCurrentFahrenheit()}
           <div className="forecast">
             <h1 className="forecast-title">Weather Forecast</h1>
             <div className="grid-container">
