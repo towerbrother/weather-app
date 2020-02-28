@@ -3,20 +3,15 @@
   color: #b6c3d8;
 }
 
-.city {
-  margin-bottom: 2%;
-  color: #b6c3d8;
-}
-
-.forecast-title {
-  padding: 2px;
+h1 {
+  margin-bottom: 5%;
   color: #b6c3d8;
 }
 
 .grid-container {
   display: grid;
   grid-gap: 2%;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
   max-width: 100%;
   color: #b6c3d8;
@@ -26,4 +21,5 @@
   border: solid #b6c3d8;
   border-radius: 5%;
   margin: 2%;
+  box-shadow: 3px 3px #b6c3d8;
 }

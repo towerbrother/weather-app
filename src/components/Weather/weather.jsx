@@ -4,10 +4,6 @@ import "./Weather.css";
 const Weather = props => {
   const { dataCurrent, dataForecast, unitMeasure } = props;
 
-  const today = new Date();
-  const dateToday =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-
   const weatherIcon = {
     Thunderstorm: "wi-thunderstorm",
     Drizzle: "wi-sleet",
@@ -42,12 +38,17 @@ const Weather = props => {
   const convertFahrenheit = celsius =>
     Math.round((celsius * 1.8 + 32) * 10) / 10;
 
+  const displayCity = () => {
+    return (
+      <h1 className="p-2">
+        {dataCurrent.name}, {dataCurrent.sys.country}
+      </h1>
+    );
+  };
+
   const displayCurrentMetric = () => {
     return (
       <div className="current-weather">
-        <h1 className="p-2">
-          {dataCurrent.name}, {dataCurrent.sys.country}
-        </h1>
         <h5 className="p-2">
           <i
             className={`wi ${getWeatherIcon(
@@ -70,9 +71,6 @@ const Weather = props => {
   const displayCurrentFahrenheit = () => {
     return (
       <div className="current-weather">
-        <h1 className="p-2">
-          {dataCurrent.name}, {dataCurrent.sys.country}
-        </h1>
         <h5 className="p-2">
           <i
             className={`wi ${getWeatherIcon(
@@ -96,117 +94,99 @@ const Weather = props => {
     );
   };
 
+  const displayForecastMetric = () => {
+    const arrayForecast = dataForecast.list.filter(
+      item =>
+        item.dt_txt.slice(11, 19) === dataForecast.list[39].dt_txt.slice(11, 19)
+    );
+    return (
+      <div className="forecast">
+        <div className="grid-container">
+          {arrayForecast.map(item => (
+            <div key={item.dt} className="grid-item">
+              <h4 className="p-2">{item.dt_txt.slice(0, 10)}</h4>
+              <h5 className="p-2">
+                <i className={`wi ${getWeatherIcon(item.weather[0].id)}`}></i>
+              </h5>
+              <h3 className="p-2">{convertCelsius(item.main.temp)}&deg;C</h3>
+              <h4 className="p-2">{item.weather[0].description}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const displayForecastFahrenheit = () => {
+    const arrayForecast = dataForecast.list.filter(
+      item =>
+        item.dt_txt.slice(11, 19) === dataForecast.list[39].dt_txt.slice(11, 19)
+    );
+    return (
+      <div className="forecast">
+        <div className="grid-container">
+          {arrayForecast.map(item => (
+            <div key={item.dt} className="grid-item">
+              <h4 className="p-2">{item.dt_txt.slice(0, 10)}</h4>
+              <h5 className="p-2">
+                <i className={`wi ${getWeatherIcon(item.weather[0].id)}`}></i>
+              </h5>
+              <h3 className="p-2">
+                {convertFahrenheit(convertCelsius(item.main.temp))}&deg;F
+              </h3>
+              <h4 className="p-2">{item.weather[0].description}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   if (unitMeasure === "metric") {
     if (dataCurrent && !dataForecast) {
-      return displayCurrentMetric();
+      return (
+        <>
+          {displayCity()}
+          {displayCurrentMetric()}
+        </>
+      );
     } else if (!dataCurrent && dataForecast) {
       return (
-        <div className="forecast">
-          <h1 className="city">
-            {dataForecast.city.name}, {dataForecast.city.country}
-          </h1>
-          <div className="grid-container">
-            {dataForecast.list
-              .filter(item => dateToday !== item.dt_txt.slice(0, 10))
-              .map(item => (
-                <div key={item.dt} className="grid-item">
-                  <h4 className="p-2">{item.dt_txt}</h4>
-                  <h5 className="p-2">
-                    <i
-                      className={`wi ${getWeatherIcon(item.weather[0].id)}`}
-                    ></i>
-                  </h5>
-                  <h3 className="p-2">
-                    {convertCelsius(item.main.temp)}&deg;C
-                  </h3>
-                  <h4 className="p-2">{item.weather[0].description}</h4>
-                </div>
-              ))}
-          </div>
-        </div>
+        <>
+          {displayCity()}
+          {displayForecastMetric()}
+        </>
       );
     } else {
       return (
         <>
+          {displayCity()}
           {displayCurrentMetric()}
-          <div className="forecast-weather">
-            <h1 className="forecast-title">Weather Forecast</h1>
-            <div className="grid-container">
-              {dataForecast.list
-                .filter(item => dateToday !== item.dt_txt.slice(0, 10))
-                .map(item => (
-                  <div key={item.dt} className="grid-item">
-                    <h4 className="p-2">{item.dt_txt}</h4>
-                    <h5 className="p-2">
-                      <i
-                        className={`wi ${getWeatherIcon(item.weather[0].id)}`}
-                      ></i>
-                    </h5>
-                    <h3 className="p-2">
-                      {convertCelsius(item.main.temp)}&deg;C
-                    </h3>
-                    <h4 className="p-2">{item.weather[0].description}</h4>
-                  </div>
-                ))}
-            </div>
-          </div>
+          {displayForecastMetric()}
         </>
       );
     }
   } else {
     if (dataCurrent && !dataForecast) {
-      return displayCurrentFahrenheit();
+      return (
+        <>
+          {displayCity()}
+          {displayCurrentFahrenheit()}
+        </>
+      );
     } else if (!dataCurrent && dataForecast) {
       return (
-        <div className="forecast">
-          <h1 className="city">
-            {dataForecast.city.name}, {dataForecast.city.country}
-          </h1>
-          <div className="grid-container">
-            {dataForecast.list
-              .filter(item => dateToday !== item.dt_txt.slice(0, 10))
-              .map(item => (
-                <div key={item.dt} className="grid-item">
-                  <h4 className="p-2">{item.dt_txt}</h4>
-                  <h5 className="p-2">
-                    <i
-                      className={`wi ${getWeatherIcon(item.weather[0].id)}`}
-                    ></i>
-                  </h5>
-                  <h3 className="p-2">
-                    {convertFahrenheit(convertCelsius(item.main.temp))}&deg;F
-                  </h3>
-                  <h4 className="p-2">{item.weather[0].description}</h4>
-                </div>
-              ))}
-          </div>
-        </div>
+        <>
+          {displayCity()}
+          {displayForecastFahrenheit()}
+        </>
       );
     } else {
       return (
         <>
+          {displayCity()}
           {displayCurrentFahrenheit()}
-          <div className="forecast">
-            <h1 className="forecast-title">Weather Forecast</h1>
-            <div className="grid-container">
-              {dataForecast.list
-                .filter(item => dateToday !== item.dt_txt.slice(0, 10))
-                .map(item => (
-                  <div key={item.dt} className="grid-item">
-                    <h4 className="p-2">{item.dt_txt}</h4>
-                    <h5 className="p-2">
-                      <i
-                        className={`wi ${getWeatherIcon(item.weather[0].id)}`}
-                      ></i>
-                    </h5>
-                    <h3 className="p-2">
-                      {convertFahrenheit(convertCelsius(item.main.temp))}&deg;F
-                    </h3>
-                    <h4 className="p-2">{item.weather[0].description}</h4>
-                  </div>
-                ))}
-            </div>
-          </div>
+          {displayForecastFahrenheit()}
         </>
       );
     }
