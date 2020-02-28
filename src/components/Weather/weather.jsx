@@ -38,10 +38,18 @@ const Weather = props => {
   const convertFahrenheit = celsius =>
     Math.round((celsius * 1.8 + 32) * 10) / 10;
 
-  const displayCity = () => {
+  const displayCityCurrent = () => {
     return (
       <h1 className="p-2">
         {dataCurrent.name}, {dataCurrent.sys.country}
+      </h1>
+    );
+  };
+
+  const displayCityForecast = () => {
+    return (
+      <h1 className="p-2">
+        {dataForecast.city.name}, {dataForecast.city.country}
       </h1>
     );
   };
@@ -146,21 +154,21 @@ const Weather = props => {
     if (dataCurrent && !dataForecast) {
       return (
         <>
-          {displayCity()}
+          {displayCityCurrent()}
           {displayCurrentMetric()}
         </>
       );
     } else if (!dataCurrent && dataForecast) {
       return (
         <>
-          {displayCity()}
+          {displayCityForecast()}
           {displayForecastMetric()}
         </>
       );
     } else {
       return (
         <>
-          {displayCity()}
+          {displayCityCurrent()}
           {displayCurrentMetric()}
           {displayForecastMetric()}
         </>
@@ -170,21 +178,21 @@ const Weather = props => {
     if (dataCurrent && !dataForecast) {
       return (
         <>
-          {displayCity()}
+          {displayCityCurrent()}
           {displayCurrentFahrenheit()}
         </>
       );
     } else if (!dataCurrent && dataForecast) {
       return (
         <>
-          {displayCity()}
+          {displayCityForecast()}
           {displayForecastFahrenheit()}
         </>
       );
     } else {
       return (
         <>
-          {displayCity()}
+          {displayCityCurrent()}
           {displayCurrentFahrenheit()}
           {displayForecastFahrenheit()}
         </>
