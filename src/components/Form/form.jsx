@@ -12,9 +12,19 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
           label=""
           id="city"
           type="text"
+          name="queryStringCity"
           placeholder="City..."
           onChange={onChange}
-          value={state.queryString}
+          value={state.queryStringCity}
+        />
+        <Input
+          label=""
+          id="country"
+          type="text"
+          name="queryStringCountry"
+          placeholder="Country..."
+          onChange={onChange}
+          value={state.queryStringCountry}
         />
         <button
           type="submit"
@@ -22,7 +32,7 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
           //!A && !B == !(A || B)
           //A || B == !(!A && !B)
           disabled={
-            !(state.showCurrent || state.showForecast) || !state.queryString
+            !(state.showCurrent || state.showForecast) || !state.queryStringCity
           }
         >
           Get Weather

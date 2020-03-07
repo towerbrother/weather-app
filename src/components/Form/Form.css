@@ -6,7 +6,8 @@
   font-size: 1.6em;
 }
 
-#city {
+#city,
+#country {
   background-color: transparent;
   color: #b6c3d8;
   font-size: 1.5em;

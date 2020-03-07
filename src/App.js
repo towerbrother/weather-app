@@ -15,26 +15,31 @@ class App extends React.Component {
       dataForecast: null,
       err: null,
       loading: false,
-      queryString: "",
+      queryStringCity: "",
+      queryStringCountry: "",
       showCurrent: true,
       showForecast: false,
       unitMeasure: "metric"
     };
 
-    this.handleChange = e => this.setState({ queryString: e.target.value });
+    this.handleChange = e => {
+      this.setState({ [e.target.name]: e.target.value });
+    };
 
     this.handleSubmit = e => {
       e.preventDefault();
+      this.setState({ dataCurrent: null });
+      this.setState({ dataForecast: null });
       this.setState({
         loading: this.state.showCurrentWeather + this.state.showForecast
       });
 
       if (this.state.showCurrent) {
         fetch(
-          `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryString}&APPID=${API}`
+          `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryStringCity},${this.state.queryStringCountry}&APPID=${API}`
         )
           .then(res => {
-            if (!res.ok) throw res;
+            if (!res.ok) throw res; //ask Giacomo?
             return res.json();
           })
           .then(dataCurrent => this.setState({ dataCurrent, loading: false }))
@@ -45,7 +50,7 @@ class App extends React.Component {
 
       if (this.state.showForecast) {
         fetch(
-          `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${this.state.queryString}&APPID=${API}`
+          `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${this.state.queryStringCity},${this.state.queryStringCountry}&APPID=${API}`
         )
           .then(res => {
             if (!res.ok) throw res;
@@ -58,14 +63,12 @@ class App extends React.Component {
       }
     };
 
-    this.handleBoxChecked = event => {
-      // event.preventDefault();
-      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
-      this.setState({ [event.target.id]: !this.state[event.target.id] });
+    this.handleBoxChecked = e => {
+      this.setState({ [e.target.id]: !this.state[e.target.id] }); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
     };
 
-    this.handleRadioChecked = event => {
-      this.setState({ unitMeasure: event.target.value });
+    this.handleRadioChecked = e => {
+      this.setState({ unitMeasure: e.target.value });
     };
   }
 
