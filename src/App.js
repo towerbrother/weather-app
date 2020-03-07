@@ -6,6 +6,7 @@ import "weather-icons/css/weather-icons.css";
 import "./App.css";
 
 const API = "f9b82988a14039290e02b95f5e395184";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +40,7 @@ class App extends React.Component {
           `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryStringCity},${this.state.queryStringCountry}&APPID=${API}`
         )
           .then(res => {
-            if (!res.ok) throw res; //ask Giacomo?
+            if (!res.ok) throw res;
             return res.json();
           })
           .then(dataCurrent => this.setState({ dataCurrent, loading: false }))
