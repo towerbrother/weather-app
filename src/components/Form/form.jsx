@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../Input/input";
-import Checkboxes from "../Checkboxes/checkboxes";
+import Input from "../Input/Input";
+import Checkboxes from "../Checkboxes/Checkboxes";
 import Radio from "../Radio/radio";
 import "./Form.css";
 

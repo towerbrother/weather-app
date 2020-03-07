@@ -1,12 +1,39 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1 {
+  color: #b6c3d8;
+  margin-top: 1.2rem;
+}
+
 .current-weather {
   display: block;
   color: #b6c3d8;
 }
 
-h1 {
-  margin-bottom: 5%;
-  color: #b6c3d8;
+.current-temp {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
+
+.current-min-temp {
+  margin-right: 1.8rem;
+}
+
+.current-description {
+  margin-top: 1.2rem;
+  font-size: 1.3rem;
+}
+
+/* forecast CSS below */
 
 .grid-container {
   display: grid;
@@ -21,5 +48,5 @@ h1 {
   border: solid #b6c3d8;
   border-radius: 5%;
   margin: 2%;
-  box-shadow: 3px 3px #b6c3d8;
+  box-shadow: 5px 5px 5px #b6c3d8;
 }

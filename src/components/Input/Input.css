@@ -1,7 +1,7 @@
 input[type="checkbox"],
 input[type="radio"] {
   cursor: pointer;
-  margin: 20px;
+  margin: 1rem;
 }
 
 label {
