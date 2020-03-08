@@ -2,26 +2,46 @@
   color: #b6c3d8;
   border-color: #b6c3d8;
   background-color: transparent;
-  border-radius: 5%;
-  font-size: 1.6em;
+  border-radius: 3%;
+  font-size: 1.6rem;
 }
 
 #city,
 #country {
   background-color: transparent;
   color: #b6c3d8;
-  font-size: 1.5em;
+  font-size: 1.6rem;
   border: none;
-  border-bottom: 2px solid #b6c3d8;
-  margin: 2%;
-}
-
-#city :focus {
-  background-color: transparent !important;
-  box-shadow: none !important;
+  border-bottom: 1.5px solid #b6c3d8;
+  margin: 0.8rem;
 }
 
 ::placeholder {
   color: #b6c3d8;
-  font-size: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .button {
+    font-size: 1.2rem;
+  }
+
+  #city,
+  #country {
+    font-size: 1.2rem;
+    border-bottom: 1.2px solid #b6c3d8;
+    margin: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    font-size: 0.8rem;
+  }
+
+  #city,
+  #country {
+    font-size: 0.8rem;
+    border-bottom: 1px solid #b6c3d8;
+    margin: 0.8rem;
+  }
 }

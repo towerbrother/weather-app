@@ -1,8 +1,6 @@
 import React from "react";
-import Form from "./components/Form/form";
-import Weather from "./components/Weather/weather";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "weather-icons/css/weather-icons.css";
+import Form from "./components/Form/Form";
+import Weather from "./components/Weather/Weather";
 import "./App.css";
 
 const API = "f9b82988a14039290e02b95f5e395184";
@@ -24,8 +22,8 @@ class App extends React.Component {
     };
 
     this.handleChange = e => {
+      this.setState({ queryStringCountry: "" });
       this.setState({
-        queryStringCountry: "",
         [e.target.name]: e.target.value
       });
     };

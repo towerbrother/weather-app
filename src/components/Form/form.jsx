@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../Input/input";
-import Checkboxes from "../Checkboxes/checkboxes";
-import Radio from "../Radio/radio";
+import Input from "../Input/Input";
+import Checkboxes from "../Checkboxes/Checkboxes";
+import Radio from "../Radio/Radio";
 import "./Form.css";
 
 const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
