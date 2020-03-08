@@ -24,7 +24,10 @@ class App extends React.Component {
     };
 
     this.handleChange = e => {
-      this.setState({ [e.target.name]: e.target.value });
+      this.setState({
+        queryStringCountry: "",
+        [e.target.name]: e.target.value
+      });
     };
 
     this.handleSubmit = e => {
