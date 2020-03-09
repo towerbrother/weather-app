@@ -1,4 +1,5 @@
 import React from "react";
+import CityNameDisplay from "./CityNameDisplay";
 import "./Weather.css";
 
 const Weather = props => {
@@ -19,21 +20,21 @@ const Weather = props => {
   const convertFahrenheit = celsius =>
     Math.round((celsius * 1.8 + 32) * 10) / 10;
 
-  const displayCityCurrent = () => {
-    return (
-      <h1 className="current-title">
-        {dataCurrent.name}, {dataCurrent.sys.country}
-      </h1>
-    );
-  };
+  // const displayCityCurrent = () => {
+  //   return (
+  //     <h1 className="current-title">
+  //       {dataCurrent.name}, {dataCurrent.sys.country}
+  //     </h1>
+  //   );
+  // };
 
-  const displayCityForecast = () => {
-    return (
-      <h1 className="forecast-title">
-        {dataForecast.city.name}, {dataForecast.city.country}
-      </h1>
-    );
-  };
+  // const displayCityForecast = () => {
+  //   return (
+  //     <h1 className="forecast-title">
+  //       {dataForecast.city.name}, {dataForecast.city.country}
+  //     </h1>
+  //   );
+  // };
 
   const displayCurrentMetric = () => {
     return (
@@ -131,21 +132,30 @@ const Weather = props => {
     if (dataCurrent && !dataForecast) {
       return (
         <>
-          {displayCityCurrent()}
+          <CityNameDisplay
+            dataCurrent={dataCurrent}
+            dataForecast={dataForecast}
+          />
           {displayCurrentMetric()}
         </>
       );
     } else if (!dataCurrent && dataForecast) {
       return (
         <>
-          {displayCityForecast()}
+          <CityNameDisplay
+            dataCurrent={dataCurrent}
+            dataForecast={dataForecast}
+          />
           {displayForecastMetric()}
         </>
       );
     } else {
       return (
         <>
-          {displayCityCurrent()}
+          <CityNameDisplay
+            dataCurrent={dataCurrent}
+            dataForecast={dataForecast}
+          />
           {displayCurrentMetric()}
           {displayForecastMetric()}
         </>
@@ -155,21 +165,30 @@ const Weather = props => {
     if (dataCurrent && !dataForecast) {
       return (
         <>
-          {displayCityCurrent()}
+          <CityNameDisplay
+            dataCurrent={dataCurrent}
+            dataForecast={dataForecast}
+          />
           {displayCurrentFahrenheit()}
         </>
       );
     } else if (!dataCurrent && dataForecast) {
       return (
         <>
-          {displayCityForecast()}
+          <CityNameDisplay
+            dataCurrent={dataCurrent}
+            dataForecast={dataForecast}
+          />
           {displayForecastFahrenheit()}
         </>
       );
     } else {
       return (
         <>
-          {displayCityCurrent()}
+          <CityNameDisplay
+            dataCurrent={dataCurrent}
+            dataForecast={dataForecast}
+          />
           {displayCurrentFahrenheit()}
           {displayForecastFahrenheit()}
         </>

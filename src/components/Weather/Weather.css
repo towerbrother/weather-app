@@ -8,11 +8,6 @@ p {
   margin: 0;
 }
 
-h1 {
-  color: #b6c3d8;
-  margin-top: 1.2rem;
-}
-
 .current-weather {
   display: block;
   color: #b6c3d8;
