@@ -2,7 +2,6 @@ import React from "react";
 import CityNameDisplay from "./CityNameDisplay";
 import CurrentDisplay from "./CurrentDisplay";
 import ForecastDisplay from "./ForecastDisplay";
-import "./Weather.css";
 
 const Weather = props => {
   const { dataCurrent, dataForecast, unitMeasure } = props;

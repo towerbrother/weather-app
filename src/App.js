@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./components/Form/Form";
-import Weather from "./components/Weather/Weather";
+import Weather from "./components/WeatherCards/Weather";
 import "./App.css";
 
 const API = "f9b82988a14039290e02b95f5e395184";
