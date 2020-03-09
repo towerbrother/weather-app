@@ -1,6 +1,7 @@
 import React from "react";
 import CityNameDisplay from "./CityNameDisplay";
 import "./Weather.css";
+import CurrentDisplay from "./CurrentDisplay";
 
 const Weather = props => {
   const { dataCurrent, dataForecast, unitMeasure } = props;
@@ -19,64 +20,6 @@ const Weather = props => {
 
   const convertFahrenheit = celsius =>
     Math.round((celsius * 1.8 + 32) * 10) / 10;
-
-  // const displayCityCurrent = () => {
-  //   return (
-  //     <h1 className="current-title">
-  //       {dataCurrent.name}, {dataCurrent.sys.country}
-  //     </h1>
-  //   );
-  // };
-
-  // const displayCityForecast = () => {
-  //   return (
-  //     <h1 className="forecast-title">
-  //       {dataForecast.city.name}, {dataForecast.city.country}
-  //     </h1>
-  //   );
-  // };
-
-  const displayCurrentMetric = () => {
-    return (
-      <div className="current-weather">
-        {displayWeatherIcon(dataCurrent.weather[0].icon)}
-        <p className="current-temp">
-          {convertCelsius(dataCurrent.main.temp)}&deg;C
-        </p>
-        <span className="current-min-temp">
-          min: {convertCelsius(dataCurrent.main.temp_min)}&deg;C
-        </span>
-        <span className="current-max-temp">
-          max: {convertCelsius(dataCurrent.main.temp_max)}&deg;C
-        </span>
-        <h4 className="current-description">
-          {dataCurrent.weather[0].description}
-        </h4>
-      </div>
-    );
-  };
-
-  const displayCurrentFahrenheit = () => {
-    return (
-      <div className="current-weather">
-        {displayWeatherIcon(dataCurrent.weather[0].icon)}
-        <h2 className="current-temp">
-          {convertFahrenheit(convertCelsius(dataCurrent.main.temp))}&deg;F
-        </h2>
-        <span className="current-min-temp">
-          min: {convertFahrenheit(convertCelsius(dataCurrent.main.temp_min))}
-          &deg;F
-        </span>
-        <span className="current-max-temp">
-          max: {convertFahrenheit(convertCelsius(dataCurrent.main.temp_max))}
-          &deg;F
-        </span>
-        <h4 className="current-description">
-          {dataCurrent.weather[0].description}
-        </h4>
-      </div>
-    );
-  };
 
   const displayForecastMetric = () => {
     const arrayForecast = dataForecast.list.filter(
@@ -136,7 +79,7 @@ const Weather = props => {
             dataCurrent={dataCurrent}
             dataForecast={dataForecast}
           />
-          {displayCurrentMetric()}
+          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
         </>
       );
     } else if (!dataCurrent && dataForecast) {
@@ -156,7 +99,7 @@ const Weather = props => {
             dataCurrent={dataCurrent}
             dataForecast={dataForecast}
           />
-          {displayCurrentMetric()}
+          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
           {displayForecastMetric()}
         </>
       );
@@ -169,7 +112,7 @@ const Weather = props => {
             dataCurrent={dataCurrent}
             dataForecast={dataForecast}
           />
-          {displayCurrentFahrenheit()}
+          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
         </>
       );
     } else if (!dataCurrent && dataForecast) {
@@ -179,7 +122,7 @@ const Weather = props => {
             dataCurrent={dataCurrent}
             dataForecast={dataForecast}
           />
-          {displayForecastFahrenheit()}
+          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
         </>
       );
     } else {
@@ -189,7 +132,7 @@ const Weather = props => {
             dataCurrent={dataCurrent}
             dataForecast={dataForecast}
           />
-          {displayCurrentFahrenheit()}
+          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
           {displayForecastFahrenheit()}
         </>
       );
