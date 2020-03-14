@@ -24,33 +24,22 @@ const ForecastDisplay = props => {
       item.dt_txt.slice(11, 19) === dataForecast.list[39].dt_txt.slice(11, 19)
   );
 
-  return unitMeasure === "metric" ? (
+  return (
     <div className="forecast">
       <div className="grid-container">
         {arrayForecast.map(item => (
           <div key={item.dt} className="grid-item">
             <p className="forecast-date">{item.dt_txt.slice(0, 10)}</p>
             {displayWeatherIcon(item.weather[0].icon)}
-            <p className="forecast-temp">
-              {convertCelsius(item.main.temp)}&deg;C
-            </p>
-            <p className="forecast-description">
-              {item.weather[0].description}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  ) : (
-    <div className="forecast">
-      <div className="grid-container">
-        {arrayForecast.map(item => (
-          <div key={item.dt} className="grid-item">
-            <p className="forecast-date">{item.dt_txt.slice(0, 10)}</p>
-            {displayWeatherIcon(item.weather[0].icon)}
-            <p className="forecast-temp">
-              {convertFahrenheit(convertCelsius(item.main.temp))}&deg;F
-            </p>
+            {unitMeasure === "metric" ? (
+              <p className="forecast-temp">
+                {convertCelsius(item.main.temp)}&deg;C
+              </p>
+            ) : (
+              <p className="forecast-temp">
+                {convertFahrenheit(convertCelsius(item.main.temp))}&deg;F
+              </p>
+            )}
             <p className="forecast-description">
               {item.weather[0].description}
             </p>
