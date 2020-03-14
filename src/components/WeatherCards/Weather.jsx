@@ -6,82 +6,27 @@ import ForecastDisplay from "./ForecastDisplay";
 const Weather = props => {
   const { dataCurrent, dataForecast, unitMeasure } = props;
 
-  if (unitMeasure === "metric") {
-    if (dataCurrent && !dataForecast) {
-      return (
+  return (
+    <>
+      <CityNameDisplay dataCurrent={dataCurrent} dataForecast={dataForecast} />
+      {dataCurrent && dataForecast ? (
         <>
-          <CityNameDisplay
-            dataCurrent={dataCurrent}
-            dataForecast={dataForecast}
-          />
-          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
-        </>
-      );
-    } else if (!dataCurrent && dataForecast) {
-      return (
-        <>
-          <CityNameDisplay
-            dataCurrent={dataCurrent}
-            dataForecast={dataForecast}
-          />
-          <ForecastDisplay
-            dataForecast={dataForecast}
-            unitMeasure={unitMeasure}
-          />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <CityNameDisplay
-            dataCurrent={dataCurrent}
-            dataForecast={dataForecast}
-          />
           <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
           <ForecastDisplay
             dataForecast={dataForecast}
             unitMeasure={unitMeasure}
           />
         </>
-      );
-    }
-  } else {
-    if (dataCurrent && !dataForecast) {
-      return (
-        <>
-          <CityNameDisplay
-            dataCurrent={dataCurrent}
-            dataForecast={dataForecast}
-          />
-          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
-        </>
-      );
-    } else if (!dataCurrent && dataForecast) {
-      return (
-        <>
-          <CityNameDisplay
-            dataCurrent={dataCurrent}
-            dataForecast={dataForecast}
-          />
-          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <CityNameDisplay
-            dataCurrent={dataCurrent}
-            dataForecast={dataForecast}
-          />
-          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
-          <ForecastDisplay
-            dataForecast={dataForecast}
-            unitMeasure={unitMeasure}
-          />
-        </>
-      );
-    }
-  }
+      ) : dataCurrent && !dataForecast ? (
+        <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
+      ) : (
+        <ForecastDisplay
+          dataForecast={dataForecast}
+          unitMeasure={unitMeasure}
+        />
+      )}
+    </>
+  );
 };
 
 export default Weather;
