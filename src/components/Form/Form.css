@@ -20,9 +20,11 @@
   color: #b6c3d8;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 960px) {
   .button {
     font-size: 1.2rem;
+    display: block;
+    margin: 0 auto;
   }
 
   #city,
@@ -36,6 +38,8 @@
 @media (max-width: 480px) {
   .button {
     font-size: 0.8rem;
+    display: block;
+    margin: 0 auto;
   }
 
   #city,
