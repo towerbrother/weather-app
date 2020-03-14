@@ -1,5 +1,4 @@
 import React from "react";
-import "./CityNameDisplay.css";
 
 const CityNameDisplay = props => {
   const { dataCurrent, dataForecast } = props;

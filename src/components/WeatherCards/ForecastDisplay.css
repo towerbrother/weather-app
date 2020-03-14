@@ -13,7 +13,9 @@ p {
 }
 
 .forecast-title {
-  margin-bottom: 1.2rem;
+  color: #b6c3d8;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .forecast-date {
@@ -37,7 +39,7 @@ p {
   box-shadow: 5px 5px 5px #b6c3d8;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 960px) {
   #icon {
     max-width: 70%;
     max-height: auto;

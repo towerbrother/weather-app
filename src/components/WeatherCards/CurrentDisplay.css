@@ -8,6 +8,11 @@ p {
   margin: 0;
 }
 
+.current-title {
+  color: #b6c3d8;
+  margin-top: 0.5rem;
+}
+
 .current-weather {
   display: block;
   color: #b6c3d8;
