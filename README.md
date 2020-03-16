@@ -28,7 +28,7 @@ Honorable mentions - I have been receiving a lot of support and motivation from 
 
 ![Desktop rendering - Forecast data only](./screenshots/weather-app-desktop-forecast.png?raw=true "Desktop rendering - Forecast data only")
 
-![Mobile rendering - Forecast data only](./screenshots/weather-app-iphoneX-forecast.png?raw=true "Mobile rendering - Forecast data only")
+![Mobile rendering - Forecast data only](./screenshots/weather-app-iphoneX-forecast.PNG?raw=true "Mobile rendering - Forecast data only")
 
 ## Tech/framework used
 
