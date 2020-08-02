@@ -1,0 +1,62 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+.current-title {
+  font-size: $l-size;
+  margin-top: $s-size;
+}
+
+.current-weather {
+  display: block;
+}
+
+.current-temp {
+  font-weight: bold;
+  font-size: $m-size;
+  margin-bottom: $s-size;
+}
+
+.current-min-temp {
+  font-size: $m-size;
+  margin-right: $m-size;
+}
+
+.current-max-temp {
+  font-size: $m-size;
+  margin-left: $m-size;
+}
+
+.current-description {
+  font-size: $m-size;
+  margin-top: $s-size;
+  margin-bottom: $s-size;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .current-title {
+    font-size: $xl-size;
+  }
+
+  .current-temp {
+    font-size: $l-size;
+  }
+
+  .current-min-temp {
+    font-size: $l-size;
+  }
+
+  .current-max-temp {
+    font-size: $l-size;
+  }
+
+  .current-description {
+    font-size: $l-size;
+  }
+}

@@ -1,0 +1,21 @@
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+  margin: $xs-size;
+}
+
+label {
+  color: $off-white;
+  font-size: $s-size;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin: $s-size;
+  }
+
+  label {
+    font-size: $l-size;
+  }
+}

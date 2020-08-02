@@ -1,10 +1,9 @@
 import React from "react";
-import "./ForecastDisplay.css";
 
-const ForecastDisplay = props => {
+const ForecastDisplay = (props) => {
   const { dataForecast, unitMeasure } = props;
 
-  const displayWeatherIcon = iconId => {
+  const displayWeatherIcon = (iconId) => {
     return (
       <img
         id="icon"
@@ -14,21 +13,21 @@ const ForecastDisplay = props => {
     );
   };
 
-  const convertCelsius = temp => Math.round((temp - 273.15) * 10) / 10;
+  const convertCelsius = (temp) => Math.round((temp - 273.15) * 10) / 10;
 
-  const convertFahrenheit = celsius =>
+  const convertFahrenheit = (celsius) =>
     Math.round((celsius * 1.8 + 32) * 10) / 10;
 
   const arrayForecast = dataForecast.list.filter(
-    item =>
+    (item) =>
       item.dt_txt.slice(11, 19) === dataForecast.list[39].dt_txt.slice(11, 19)
   );
 
   return (
     <div className="forecast">
-      <div className="grid-container">
-        {arrayForecast.map(item => (
-          <div key={item.dt} className="grid-item">
+      <div className="forecast-container">
+        {arrayForecast.map((item) => (
+          <div key={item.dt} className="forecast-item">
             <p className="forecast-date">{item.dt_txt.slice(0, 10)}</p>
             {displayWeatherIcon(item.weather[0].icon)}
             {unitMeasure === "metric" ? (

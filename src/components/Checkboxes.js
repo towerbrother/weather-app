@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../Input/Input";
+import Input from "./Input";
 
-const Checkboxes = props => (
+const Checkboxes = (props) => (
   <div className="checkbox">
     <Input
       label="Current"

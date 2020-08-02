@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../Input/Input";
+import Input from "./Input";
 
-const Radio = props => {
+const Radio = (props) => {
   return (
     <div className="radio">
       <Input

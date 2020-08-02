@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+  background: linear-gradient(36deg, $blue, $light-blue);
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: $m-size $s-size;
+}
+
+.content-container {
+  margin: 0 auto;
+  padding: 0 $s-size;
+  max-width: 85rem;
+}

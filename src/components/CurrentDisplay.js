@@ -1,10 +1,9 @@
 import React from "react";
-import "./CurrentDisplay.css";
 
-const CurrentDisplay = props => {
+const CurrentDisplay = (props) => {
   const { unitMeasure, dataCurrent } = props;
 
-  const displayWeatherIcon = iconId => {
+  const displayWeatherIcon = (iconId) => {
     return (
       <img
         id="icon"
@@ -14,9 +13,9 @@ const CurrentDisplay = props => {
     );
   };
 
-  const convertCelsius = temp => Math.round((temp - 273.15) * 10) / 10;
+  const convertCelsius = (temp) => Math.round((temp - 273.15) * 10) / 10;
 
-  const convertFahrenheit = celsius =>
+  const convertFahrenheit = (celsius) =>
     Math.round((celsius * 1.8 + 32) * 10) / 10;
 
   return (
