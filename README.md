@@ -2,7 +2,7 @@
 
 A weather App build with React Javascript library fetching current and forecast data from the [OpenWeatherMap API](https://openweathermap.org/api).
 
-App deployed with [gh-pages](https://create-react-app.dev/docs/deployment/#github-pages) at https://towerbrother.github.io/weather-app/
+App deployed with [Heroku](https://heroku.com) at https://tower-weather-app.herokuapp.com/
 
 ## Motivation
 
