@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Form from "./Form";
 import Weather from "./Weather";
+import Error from "./Error";
+import LoadingPage from "./LoadingPage";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
@@ -25,6 +27,7 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErr(null);
     setDataCurrent(null);
     setDataForecast(null);
     setLoading(showCurrent + showForecast);
@@ -91,12 +94,17 @@ const App = () => {
           onBoxChecked={handleBoxChecked}
           onRadioChecked={handleRadioChecked}
         />
-        {(dataCurrent || dataForecast) && (
-          <Weather
-            dataCurrent={dataCurrent}
-            dataForecast={dataForecast}
-            unitMeasure={unitMeasure}
-          />
+        {err && <Error err={err} />}
+        {loading ? (
+          <LoadingPage />
+        ) : (
+          (dataCurrent || dataForecast) && (
+            <Weather
+              dataCurrent={dataCurrent}
+              dataForecast={dataForecast}
+              unitMeasure={unitMeasure}
+            />
+          )
         )}
       </div>
     </div>

@@ -1,0 +1,13 @@
+.error {
+  margin: $m-size;
+}
+
+.error * {
+  font-size: $m-size;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .error * {
+    font-size: $xxl-size;
+  }
+}
