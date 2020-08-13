@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import WeatherContext from "./../context/weatherContext";
 
-const CityNameDisplay = ({ dataCurrent, dataForecast }) => {
+const CityNameDisplay = () => {
+  const { dataCurrent, dataForecast } = useContext(WeatherContext);
+
   return dataCurrent ? (
     <h1 className="current-title">
       {dataCurrent.name}, {dataCurrent.sys.country}

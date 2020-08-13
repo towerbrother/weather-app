@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import CurrentDisplay from "./CurrentDisplay";
 import ForecastDisplay from "./ForecastDisplay";
 import CityNameDisplay from "./CityNameDisplay";
+import WeatherContext from "./../context/weatherContext";
 
-const Weather = ({ dataCurrent, dataForecast, unitMeasure }) => {
+const Weather = () => {
+  const { dataCurrent, dataForecast } = useContext(WeatherContext);
+
   return (
     <div>
-      <CityNameDisplay dataCurrent={dataCurrent} dataForecast={dataForecast} />
+      <CityNameDisplay />
       {dataCurrent && dataForecast ? (
         <div>
-          <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
-          <ForecastDisplay
-            dataForecast={dataForecast}
-            unitMeasure={unitMeasure}
-          />
+          <CurrentDisplay />
+          <ForecastDisplay />
         </div>
       ) : dataCurrent && !dataForecast ? (
-        <CurrentDisplay dataCurrent={dataCurrent} unitMeasure={unitMeasure} />
+        <CurrentDisplay />
       ) : (
-        <ForecastDisplay
-          dataForecast={dataForecast}
-          unitMeasure={unitMeasure}
-        />
+        <ForecastDisplay />
       )}
     </div>
   );

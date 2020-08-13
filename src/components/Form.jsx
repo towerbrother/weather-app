@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import Input from "./Input";
 import Checkboxes from "./Checkboxes";
 import Radio from "./Radio";
+import WeatherContext from "./../context/weatherContext";
 
-const Form = ({
-  onChange,
-  onSubmit,
-  onBoxChecked,
-  onRadioChecked,
-  queryStringCity,
-  queryStringCountry,
-  showCurrent,
-  showForecast,
-  unitMeasure,
-}) => {
+const Form = () => {
+  const {
+    queryStringCity,
+    queryStringCountry,
+    showCurrent,
+    showForecast,
+    handleChange,
+    handleSubmit,
+  } = useContext(WeatherContext);
+
   return (
     <div className="form">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="input-container">
           <Input
             label=""
@@ -24,7 +24,7 @@ const Form = ({
             type="text"
             name="queryStringCity"
             placeholder="City..."
-            onChange={onChange}
+            onChange={handleChange}
             value={queryStringCity}
           />
           <Input
@@ -33,31 +33,20 @@ const Form = ({
             type="text"
             name="queryStringCountry"
             placeholder="Country..."
-            onChange={onChange}
+            onChange={handleChange}
             value={queryStringCountry}
           />
           <button
             type="submit"
             className="button"
-            //!A && !B == !(A || B)
-            //A || B == !(!A && !B)
             disabled={!(showCurrent || showForecast) || !queryStringCity}
           >
             Weather
           </button>
         </div>
         <div className="boxes-container">
-          <Checkboxes
-            showCurrent={showCurrent}
-            showForecast={showForecast}
-            onBoxChecked={onBoxChecked}
-            type="checkbox"
-          />
-          <Radio
-            onRadioChecked={onRadioChecked}
-            unitMeasure={unitMeasure}
-            type="radio"
-          />
+          <Checkboxes type="checkbox" />
+          <Radio type="radio" />
         </div>
       </form>
     </div>

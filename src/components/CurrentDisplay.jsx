@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import WeatherContext from "./../context/weatherContext";
 
-const CurrentDisplay = ({ unitMeasure, dataCurrent }) => {
+const CurrentDisplay = () => {
+  const { dataCurrent, unitMeasure } = useContext(WeatherContext);
+
   const displayWeatherIcon = (iconId) => {
     return (
       <img

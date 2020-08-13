@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Input from "./Input";
+import WeatherContext from "./../context/weatherContext";
 
-const Radio = ({ type, onRadioChecked, unitMeasure }) => {
+const Radio = ({ type }) => {
+  const { unitMeasure, handleRadioChecked } = useContext(WeatherContext);
+
   return (
     <div className="radio">
       <Input
@@ -10,7 +13,7 @@ const Radio = ({ type, onRadioChecked, unitMeasure }) => {
         name="unitMeasure"
         value="metric"
         type={type}
-        onChange={onRadioChecked}
+        onChange={handleRadioChecked}
         checked={unitMeasure === "metric"}
       />
       <Input
@@ -19,7 +22,7 @@ const Radio = ({ type, onRadioChecked, unitMeasure }) => {
         name="unitMeasure"
         value="imperial"
         type={type}
-        onChange={onRadioChecked}
+        onChange={handleRadioChecked}
         checked={unitMeasure === "imperial"}
       />
     </div>
