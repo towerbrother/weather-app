@@ -1,8 +1,6 @@
 import React from "react";
 
-const CurrentDisplay = (props) => {
-  const { unitMeasure, dataCurrent } = props;
-
+const CurrentDisplay = ({ unitMeasure, dataCurrent }) => {
   const displayWeatherIcon = (iconId) => {
     return (
       <img

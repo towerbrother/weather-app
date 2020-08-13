@@ -3,7 +3,17 @@ import Input from "./Input";
 import Checkboxes from "./Checkboxes";
 import Radio from "./Radio";
 
-const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
+const Form = ({
+  onChange,
+  onSubmit,
+  onBoxChecked,
+  onRadioChecked,
+  queryStringCity,
+  queryStringCountry,
+  showCurrent,
+  showForecast,
+  unitMeasure,
+}) => {
   return (
     <div className="form">
       <form onSubmit={onSubmit}>
@@ -15,7 +25,7 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
             name="queryStringCity"
             placeholder="City..."
             onChange={onChange}
-            value={state.queryStringCity}
+            value={queryStringCity}
           />
           <Input
             label=""
@@ -24,31 +34,28 @@ const Form = ({ onChange, onSubmit, state, onBoxChecked, onRadioChecked }) => {
             name="queryStringCountry"
             placeholder="Country..."
             onChange={onChange}
-            value={state.queryStringCountry}
+            value={queryStringCountry}
           />
           <button
             type="submit"
             className="button"
             //!A && !B == !(A || B)
             //A || B == !(!A && !B)
-            disabled={
-              !(state.showCurrent || state.showForecast) ||
-              !state.queryStringCity
-            }
+            disabled={!(showCurrent || showForecast) || !queryStringCity}
           >
             Weather
           </button>
         </div>
         <div className="boxes-container">
           <Checkboxes
-            showCurrent={state.showCurrent}
-            showForecast={state.showForecast}
+            showCurrent={showCurrent}
+            showForecast={showForecast}
             onBoxChecked={onBoxChecked}
             type="checkbox"
           />
           <Radio
             onRadioChecked={onRadioChecked}
-            unitMeasure={state.unitMeasure}
+            unitMeasure={unitMeasure}
             type="radio"
           />
         </div>

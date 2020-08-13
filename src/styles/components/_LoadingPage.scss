@@ -1,0 +1,10 @@
+@import "./App";
+
+.loader {
+  @extend .App;
+}
+
+.loader-image {
+  height: 40rem;
+  width: 40rem;
+}

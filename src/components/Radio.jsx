@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "./Input";
 
-const Radio = (props) => {
+const Radio = ({ type, onRadioChecked, unitMeasure }) => {
   return (
     <div className="radio">
       <Input
@@ -9,18 +9,18 @@ const Radio = (props) => {
         id="metric"
         name="unitMeasure"
         value="metric"
-        type={props.type}
-        onChange={props.onRadioChecked}
-        checked={props.unitMeasure === "metric"}
+        type={type}
+        onChange={onRadioChecked}
+        checked={unitMeasure === "metric"}
       />
       <Input
         label="Imperial"
         id="imperial"
         name="unitMeasure"
         value="imperial"
-        type={props.type}
-        onChange={props.onRadioChecked}
-        checked={props.unitMeasure === "imperial"}
+        type={type}
+        onChange={onRadioChecked}
+        checked={unitMeasure === "imperial"}
       />
     </div>
   );

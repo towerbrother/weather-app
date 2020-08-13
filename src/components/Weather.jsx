@@ -3,9 +3,7 @@ import CurrentDisplay from "./CurrentDisplay";
 import ForecastDisplay from "./ForecastDisplay";
 import CityNameDisplay from "./CityNameDisplay";
 
-const Weather = (props) => {
-  const { dataCurrent, dataForecast, unitMeasure } = props;
-
+const Weather = ({ dataCurrent, dataForecast, unitMeasure }) => {
   return (
     <div>
       <CityNameDisplay dataCurrent={dataCurrent} dataForecast={dataForecast} />

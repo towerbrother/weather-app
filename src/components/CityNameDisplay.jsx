@@ -1,7 +1,6 @@
 import React from "react";
 
-const CityNameDisplay = props => {
-  const { dataCurrent, dataForecast } = props;
+const CityNameDisplay = ({ dataCurrent, dataForecast }) => {
   return dataCurrent ? (
     <h1 className="current-title">
       {dataCurrent.name}, {dataCurrent.sys.country}

@@ -1,103 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "./Form";
 import Weather from "./Weather";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [dataCurrent, setDataCurrent] = useState(null);
+  const [dataForecast, setDataForecast] = useState(null);
+  const [err, setErr] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [queryStringCity, setQueryStringCity] = useState("");
+  const [queryStringCountry, setQueryStringCountry] = useState("");
+  const [showCurrent, setShowCurrent] = useState(true);
+  const [showForecast, setShowForecast] = useState(false);
+  const [unitMeasure, setUnitMeasure] = useState("metric");
 
-    this.state = {
-      dataCurrent: null,
-      dataForecast: null,
-      err: null,
-      loading: false,
-      queryStringCity: "",
-      queryStringCountry: "",
-      showCurrent: true,
-      showForecast: false,
-      unitMeasure: "metric",
-    };
+  const handleChange = (e) => {
+    setQueryStringCountry("");
+    const name = e.target.name;
+    if (name === "queryStringCity") setQueryStringCity(e.target.value);
+    if (name === "queryStringCountry") setQueryStringCountry(e.target.value);
+    // setState({[e.target.name]: e.target.value });
+  };
 
-    this.handleChange = (e) => {
-      this.setState({ queryStringCountry: "" });
-      this.setState({
-        [e.target.name]: e.target.value,
-      });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setDataCurrent(null);
+    setDataForecast(null);
+    setLoading(showCurrent + showForecast);
 
-    this.handleSubmit = (e) => {
-      e.preventDefault();
-      this.setState({ dataCurrent: null });
-      this.setState({ dataForecast: null });
-      this.setState({
-        loading: this.state.showCurrentWeather + this.state.showForecast,
-      });
+    if (showCurrent) {
+      fetch(
+        `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
+      )
+        .then((res) => {
+          if (!res.ok) throw res;
+          return res.json();
+        })
+        .then((dataCurrent) => {
+          setDataCurrent(dataCurrent);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setErr(err);
+          setLoading(loading - 1);
+        });
+    }
 
-      if (this.state.showCurrent) {
-        fetch(
-          `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${this.state.queryStringCity},${this.state.queryStringCountry}&APPID=${API}`
-        )
-          .then((res) => {
-            if (!res.ok) throw res;
-            return res.json();
-          })
-          .then((dataCurrent) => this.setState({ dataCurrent, loading: false }))
-          .catch((err) =>
-            this.setState({ err, loading: this.state.loading - 1 })
-          );
-      }
+    if (showForecast) {
+      fetch(
+        `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
+      )
+        .then((res) => {
+          if (!res.ok) throw res;
+          return res.json();
+        })
+        .then((dataForecast) => {
+          setDataForecast(dataForecast);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setErr(err);
+          setLoading(loading - 1);
+        });
+    }
+  };
 
-      if (this.state.showForecast) {
-        fetch(
-          `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${this.state.queryStringCity},${this.state.queryStringCountry}&APPID=${API}`
-        )
-          .then((res) => {
-            if (!res.ok) throw res;
-            return res.json();
-          })
-          .then((dataForecast) =>
-            this.setState({ dataForecast, loading: false })
-          )
-          .catch((err) =>
-            this.setState({ err, loading: this.state.loading - 1 })
-          );
-      }
-    };
+  const handleBoxChecked = (e) => {
+    const id = e.target.id;
+    if (id === "showCurrent") setShowCurrent(!showCurrent);
+    if (id === "showForecast") setShowForecast(!showForecast);
+    // setState({ [e.target.id]: !state[e.target.id] });
+  };
 
-    this.handleBoxChecked = (e) => {
-      this.setState({ [e.target.id]: !this.state[e.target.id] }); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
-    };
+  const handleRadioChecked = (e) => {
+    setUnitMeasure(e.target.value);
+  };
 
-    this.handleRadioChecked = (e) => {
-      this.setState({ unitMeasure: e.target.value });
-    };
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <div className="content-container">
-          <Form
-            state={this.state}
-            onChange={this.handleChange}
-            onSubmit={this.handleSubmit}
-            onBoxChecked={this.handleBoxChecked}
-            onRadioChecked={this.handleRadioChecked}
-            onDisabled={this.handleButton}
+  return (
+    <div className="App">
+      <div className="content-container">
+        <Form
+          queryStringCity={queryStringCity}
+          queryStringCountry={queryStringCountry}
+          showCurrent={showCurrent}
+          showForecast={showForecast}
+          unitMeasure={unitMeasure}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          onBoxChecked={handleBoxChecked}
+          onRadioChecked={handleRadioChecked}
+        />
+        {(dataCurrent || dataForecast) && (
+          <Weather
+            dataCurrent={dataCurrent}
+            dataForecast={dataForecast}
+            unitMeasure={unitMeasure}
           />
-          {(this.state.dataCurrent || this.state.dataForecast) && (
-            <Weather
-              dataCurrent={this.state.dataCurrent}
-              dataForecast={this.state.dataForecast}
-              unitMeasure={this.state.unitMeasure}
-            />
-          )}
-        </div>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
