@@ -4,6 +4,7 @@ import Weather from "./Weather";
 import Error from "./Error";
 import LoadingPage from "./LoadingPage";
 import WeatherContext from "./../context/weatherContext";
+import CreatedBy from "./CreatedBy";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
@@ -105,6 +106,7 @@ const App = () => {
             (dataCurrent || dataForecast) && <Weather />
           )}
         </div>
+        <CreatedBy />
       </div>
     </WeatherContext.Provider>
   );

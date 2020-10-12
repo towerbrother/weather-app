@@ -4,10 +4,13 @@
   min-height: 100vh;
   min-width: 100vw;
   padding: $m-size $s-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .content-container {
   margin: 0 auto;
   padding: 0 $s-size;
-  max-width: 85rem;
+  max-width: 90vw;
 }

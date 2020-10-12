@@ -1,0 +1,20 @@
+.container {
+  //   bottom: 0;
+  //   position: fixed;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   margin-top: $m-size;
+}
+
+.createdBy__text {
+  color: $off-white;
+  display: block;
+  font-size: $m-size;
+  margin: $m-size;
+  text-align: center;
+}
+
+.createdBy__link {
+  color: $off-white;
+  text-decoration: underline;
+}

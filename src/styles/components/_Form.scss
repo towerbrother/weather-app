@@ -12,6 +12,7 @@
   border-radius: 3%;
   color: $off-white;
   font-size: $l-size;
+  margin: 0 $s-size;
 }
 
 #city,
@@ -21,7 +22,7 @@
   font-size: $l-size;
   border: none;
   border-bottom: 1px solid $off-white;
-  margin-bottom: $m-size;
+  margin: 0 $s-size $s-size $m-size;
   max-width: 20rem;
 }
 
@@ -35,7 +36,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   margin: $m-size;
-  max-width: 80rem;
+  max-width: 85vw;
   padding: 0 $m-size;
 }
 
