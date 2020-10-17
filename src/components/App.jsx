@@ -4,7 +4,8 @@ import Weather from "./Weather";
 import Error from "./Error";
 import LoadingPage from "./LoadingPage";
 import WeatherContext from "./../context/weatherContext";
-import CreatedBy from "./CreatedBy";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 
@@ -81,34 +82,40 @@ const App = () => {
   };
 
   return (
-    <WeatherContext.Provider
-      value={{
-        dataCurrent,
-        dataForecast,
-        queryStringCity,
-        queryStringCountry,
-        showCurrent,
-        showForecast,
-        unitMeasure,
-        handleChange,
-        handleSubmit,
-        handleBoxChecked,
-        handleRadioChecked,
-      }}
-    >
-      <div className="App">
-        <div className="content-container">
-          <Form />
-          {err && <Error err={err} />}
-          {loading ? (
-            <LoadingPage />
-          ) : (
-            (dataCurrent || dataForecast) && <Weather />
-          )}
+    <div className="wrapper">
+      <Header
+        title="Weather App"
+        subtitle="Check the weather before getting out of the house!"
+      />
+      <WeatherContext.Provider
+        value={{
+          dataCurrent,
+          dataForecast,
+          queryStringCity,
+          queryStringCountry,
+          showCurrent,
+          showForecast,
+          unitMeasure,
+          handleChange,
+          handleSubmit,
+          handleBoxChecked,
+          handleRadioChecked,
+        }}
+      >
+        <div className="App">
+          <div className="container">
+            <Form />
+            {err && <Error err={err} />}
+            {loading ? (
+              <LoadingPage />
+            ) : (
+              (dataCurrent || dataForecast) && <Weather />
+            )}
+          </div>
         </div>
-        <CreatedBy />
-      </div>
-    </WeatherContext.Provider>
+      </WeatherContext.Provider>
+      <Footer />
+    </div>
   );
 };
 

@@ -1,0 +1,15 @@
+.wrapper {
+  background: $light-blue;
+  color: $off-white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.container {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 12px;
+}

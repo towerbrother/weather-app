@@ -10,7 +10,7 @@ p {
 
 .current-title {
   font-size: $l-size;
-  margin-top: $s-size;
+  margin-top: $xs-size;
 }
 
 .current-weather {
@@ -20,7 +20,7 @@ p {
 .current-temp {
   font-weight: bold;
   font-size: $m-size;
-  margin-bottom: $s-size;
+  margin-bottom: $xs-size;
 }
 
 .current-min-temp {
@@ -35,8 +35,8 @@ p {
 
 .current-description {
   font-size: $m-size;
-  margin-top: $s-size;
-  margin-bottom: $s-size;
+  margin-top: $xs-size;
+  margin-bottom: $xs-size;
 }
 
 @media (min-width: $desktop-breakpoint) {
