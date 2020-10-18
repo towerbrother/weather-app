@@ -17,8 +17,6 @@ const App = () => {
   const [unitMeasure, setUnitMeasure] = useState("metric");
   const [queryStringCity, setQueryStringCity] = useState("");
   const [queryStringCountry, setQueryStringCountry] = useState("");
-  const [showCurrent, setShowCurrent] = useState(true);
-  const [showForecast, setShowForecast] = useState(false);
 
   const handleChange = (e) => {
     setQueryStringCountry("");
@@ -32,49 +30,42 @@ const App = () => {
     setErr(null);
     setDataCurrent(null);
     setDataForecast(null);
-    setLoading(showCurrent + showForecast);
+    setLoading(true);
 
-    if (showCurrent) {
-      fetch(
-        `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
-      )
-        .then((res) => {
-          if (!res.ok) throw res;
-          return res.json();
-        })
-        .then((dataCurrent) => {
-          setDataCurrent(dataCurrent);
-          setLoading(false);
-        })
-        .catch((err) => {
-          setErr(err);
-          setLoading(loading - 1);
-        });
-    }
+    fetch(
+      `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
+    )
+      .then((res) => {
+        if (!res.ok) throw res;
+        return res.json();
+      })
+      .then((dataCurrent) => {
+        setDataCurrent(dataCurrent);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setErr(err);
+        setLoading(loading - 1);
+      });
 
-    if (showForecast) {
-      fetch(
-        `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
-      )
-        .then((res) => {
-          if (!res.ok) throw res;
-          return res.json();
-        })
-        .then((dataForecast) => {
-          setDataForecast(dataForecast);
-          setLoading(false);
-        })
-        .catch((err) => {
-          setErr(err);
-          setLoading(loading - 1);
-        });
-    }
-  };
+    fetch(
+      `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
+    )
+      .then((res) => {
+        if (!res.ok) throw res;
+        return res.json();
+      })
+      .then((dataForecast) => {
+        setDataForecast(dataForecast);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setErr(err);
+        setLoading(loading - 1);
+      });
 
-  const handleBoxChecked = (e) => {
-    const id = e.target.id;
-    if (id === "showCurrent") setShowCurrent(!showCurrent);
-    if (id === "showForecast") setShowForecast(!showForecast);
+    setQueryStringCity("");
+    setQueryStringCountry("");
   };
 
   const handleRadioChecked = (e) => {
@@ -93,12 +84,9 @@ const App = () => {
           dataForecast,
           queryStringCity,
           queryStringCountry,
-          showCurrent,
-          showForecast,
           unitMeasure,
           handleChange,
           handleSubmit,
-          handleBoxChecked,
           handleRadioChecked,
         }}
       >
@@ -109,7 +97,7 @@ const App = () => {
             {loading ? (
               <LoadingPage />
             ) : (
-              (dataCurrent || dataForecast) && <Weather />
+              dataCurrent && dataForecast && <Weather />
             )}
           </div>
         </div>

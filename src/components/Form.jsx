@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Input from "./Input";
-import Checkboxes from "./Checkboxes";
 import Radio from "./Radio";
 import WeatherContext from "./../context/weatherContext";
 
@@ -8,8 +7,6 @@ const Form = () => {
   const {
     queryStringCity,
     queryStringCountry,
-    showCurrent,
-    showForecast,
     handleChange,
     handleSubmit,
   } = useContext(WeatherContext);
@@ -36,16 +33,11 @@ const Form = () => {
             onChange={handleChange}
             value={queryStringCountry}
           />
-          <button
-            type="submit"
-            className="button"
-            disabled={!(showCurrent || showForecast) || !queryStringCity}
-          >
+          <button type="submit" className="button" disabled={!queryStringCity}>
             Weather
           </button>
         </div>
         <div className="boxes-container">
-          <Checkboxes type="checkbox" />
           <Radio type="radio" />
         </div>
       </form>
