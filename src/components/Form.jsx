@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Input from "./Input";
-import Radio from "./Radio";
+// import Radio from "./Radio";
 import WeatherContext from "./../context/weatherContext";
 
 const Form = () => {
@@ -37,9 +37,9 @@ const Form = () => {
             Weather
           </button>
         </div>
-        <div className="boxes-container">
+        {/* <div className="boxes-container">
           <Radio type="radio" />
-        </div>
+        </div> */}
       </form>
     </div>
   );

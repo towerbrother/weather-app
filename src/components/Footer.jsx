@@ -1,4 +1,5 @@
 import React from "react";
+import Radio from "./Radio";
 
 const Footer = () => (
   <div className="footer">
@@ -14,6 +15,9 @@ const Footer = () => (
           Giorgio Torre
         </a>
       </h5>
+      <div className="boxes-container">
+        <Radio type="radio" />
+      </div>
     </div>
   </div>
 );

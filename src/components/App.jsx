@@ -101,8 +101,8 @@ const App = () => {
             )}
           </div>
         </div>
+        <Footer />
       </WeatherContext.Provider>
-      <Footer />
     </div>
   );
 };

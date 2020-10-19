@@ -30,15 +30,15 @@
   color: $off-white;
 }
 
-.boxes-container {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: $m-size;
-  max-width: 85vw;
-  padding: 0 $m-size;
-}
+// .boxes-container {
+//   align-items: center;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-evenly;
+//   margin: $m-size;
+//   max-width: 85vw;
+//   padding: 0 $m-size;
+// }
 
 @media (min-width: $desktop-breakpoint) {
   .input-container {

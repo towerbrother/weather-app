@@ -2,6 +2,13 @@
   background: $blue;
   color: $off-white;
   padding: 12px;
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 85vw;
+  }
 }
 
 .footer__text {
@@ -15,4 +22,9 @@
   font-size: 20px;
   text-decoration: underline;
   margin: 0;
+}
+
+.boxes-container {
+  margin: 0;
+  padding: 0 $m-size;
 }
