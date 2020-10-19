@@ -33,9 +33,8 @@
 @media (min-width: $desktop-breakpoint) {
   .input-container {
     flex-direction: row;
-    justify-content: space-around;
-    max-width: 80rem;
-    padding: 0 $m-size;
+    justify-content: space-evenly;
+    padding: $m-size;
   }
 
   .button {

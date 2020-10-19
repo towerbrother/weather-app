@@ -9,7 +9,13 @@
 }
 
 .container {
-  max-width: 90rem;
+  max-width: 90vw;
   margin: 0 auto;
   padding: 0 12px;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .container {
+    max-width: 60vw;
+  }
 }
