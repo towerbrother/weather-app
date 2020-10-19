@@ -16,7 +16,7 @@ const Footer = () => (
         </a>
       </h5>
       <div className="boxes-container">
-        <Radio type="radio" />
+        <Radio />
       </div>
     </div>
   </div>
