@@ -1,7 +1,7 @@
 .footer {
   background: $blue;
   color: $off-white;
-  padding: 12px;
+  padding: 8px;
   .container {
     align-items: center;
     display: flex;
@@ -12,19 +12,41 @@
 }
 
 .footer__text {
-  font-size: 20px;
+  font-size: 12px;
   margin: 0;
-  text-align: center;
+  padding: 0 $xs-size;
 }
 
 .footer__link {
   color: $off-white;
-  font-size: 20px;
+  font-size: 12px;
   text-decoration: underline;
   margin: 0;
 }
 
 .boxes-container {
   margin: 0;
-  padding: 0 $m-size;
+  padding: 0 $xs-size;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .footer {
+    padding: 12px;
+    .container {
+      max-width: 90vw;
+    }
+  }
+
+  .footer__text {
+    font-size: 20px;
+  }
+
+  .footer__link {
+    font-size: 20px;
+  }
+
+  .boxes-container {
+    margin: 0;
+    padding: 0 $m-size;
+  }
 }

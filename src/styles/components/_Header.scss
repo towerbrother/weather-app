@@ -1,17 +1,33 @@
 .header {
   background: $blue;
   color: $off-white;
-  padding: 12px;
+  padding: 8px;
 }
 
 .header__title {
-  font-size: 36px;
+  text-align: center;
+  font-size: 32px;
   margin: 0;
 }
 
 .header__subtitle {
-  color: $off-white;
-  font-size: 20px;
-  font-weight: 500;
-  margin: 0;
+  position: absolute;
+  visibility: hidden;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .header__title {
+    text-align: left;
+    font-size: 36px;
+    margin: 0;
+  }
+
+  .header__subtitle {
+    color: $off-white;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+    visibility: visible;
+  }
 }
