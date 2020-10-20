@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import WeatherCard from "./WeatherCard";
-import WeatherContext from "./../../context/weatherContext";
+import WeatherContext from "../context/weatherContext";
 
 const Display = () => {
   const { dataCurrent, dataForecast } = useContext(WeatherContext);

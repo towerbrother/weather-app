@@ -1,5 +1,5 @@
 import React from "react";
-import WeatherContext from "./../../context/weatherContext";
+import WeatherContext from "../context/weatherContext";
 
 const WeatherCard = ({ active, dataCurrent, item }) => {
   const { unitMeasure } = useContext(WeatherContext);
@@ -14,8 +14,31 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
     );
   };
 
-  const displayDate = (rowDate) => {
-    // if not "Today" then Thu/Wed... and 21st 22nd 23rd 24th
+  const displayDate = (n) => {
+    if (n === "01") {
+      return n.slice(1, 2) + "st";
+    } else if (n === "21" || n === "31") {
+      return n + "st";
+    } else if (n === "02") {
+      return n.slice(1, 2) + "nd";
+    } else if (n === "22") {
+      return n + "nd";
+    } else if (n === "03") {
+      return n.slice(1, 2) + "rd";
+    } else if (n === "23") {
+      return n + "rd";
+    } else if (
+      n === "04" ||
+      n === "05" ||
+      n === "06" ||
+      n === "07" ||
+      n === "08" ||
+      n === "09"
+    ) {
+      return n.slice(1, 2) + "th";
+    } else {
+      return n + "th";
+    }
   };
 
   const convertCelsius = (temp) => Math.round((temp - 273.15) * 10) / 10;
@@ -65,33 +88,14 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
             </div>
           </div>
           <div className="secondary-container">
-            <div className="secondary-first-row">
-              <p className="description">
-                {dataCurrent.weather[0].description}
-              </p>
-            </div>
-            <div className="secondary-second-row">
-              <div className="sun-container">
-                <div className="sunrise-container">
-                  {/* fontawesome */}
-                  <div className="sunrise-icon">SUNRISE-ICON</div>
-                  {/* to be found how to get this - how to transform it? function */}
-                  <div className="sunrise-time">{sunrise}</div>
-                </div>
-                <div className="sunset-container">
-                  <div className="sunset-icon">SUNSET-ICON</div>
-                  <div className="sunset-time">{sunset}</div>
-                </div>
-              </div>
-            </div>
+            <p className="description">{dataCurrent.weather[0].description}</p>
           </div>
         </>
       ) : active && item ? (
         <>
           <div className="primary-container">
             <div className="primary-first-row">
-              {/* further slicing needed */}
-              <h3 className="date">{displayDate(item.dt_txt.slice(0, 10))}</h3>
+              <h3 className="date">{displayDate(item.dt_txt.slice(8, 10))}</h3>
             </div>
             <div className="primary-second-row">
               <div className="icon">
@@ -100,7 +104,6 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
               <div className="temperatures">
                 {unitMeasure === "metric" ? (
                   <>
-                    {/* check it actually works */}
                     <span className="max-temp">
                       {convertCelsius(item.main.temp_max)}&deg;C
                     </span>
@@ -124,21 +127,7 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
             </div>
           </div>
           <div className="secondary-container">
-            <div className="secondary-first-row">
-              <p className="description">{item.weather[0].description}</p>
-            </div>
-            <div className="secondary-second-row">
-              <div className="sun-container">
-                <div className="sunrise-container">
-                  <div className="sunrise-icon">SUNRISE-ICON</div>
-                  <div className="sunrise-time">{sunrise}</div>
-                </div>
-                <div className="sunset-container">
-                  <div className="sunset-icon">SUNSET-ICON</div>
-                  <div className="sunset-time">{sunset}</div>
-                </div>
-              </div>
-            </div>
+            <p className="description">{item.weather[0].description}</p>
           </div>
         </>
       ) : !active && dataCurrent ? (
@@ -185,7 +174,7 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
         <>
           <div className="primary-container">
             <div className="primary-first-row">
-              <h3 className="date">{displayDate(item.dt_txt.slice(0, 10))}</h3>
+              <h3 className="date">{displayDate(item.dt_txt.slice(8, 10))}</h3>
             </div>
             <div className="primary-second-row">
               <div className="icon">

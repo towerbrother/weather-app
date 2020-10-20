@@ -2,7 +2,7 @@
 
 A weather App build with React Javascript library fetching current and forecast data from the [OpenWeatherMap API](https://openweathermap.org/api).
 
-App deployed with [Heroku](https://heroku.com) at https://tower-weather-app.herokuapp.com/
+App deployed with [GitHub Pages](https://pages.github.com/) at https://towerbrother.github.io/weather-app/
 
 ## Motivation
 
@@ -12,27 +12,27 @@ The App has been build as learning opportunity during my path to become a Softwa
 
 ### Desktop rendering - Current & Forecast data
 
-![Desktop rendering - Current & Forecast data](./screenshots/weather-app-desktop-current-forecast.png?raw=true "Desktop rendering - Current & Forecast data showing")
+<!-- ![Desktop rendering - Current & Forecast data](./screenshots/weather-app-desktop-current-forecast.png?raw=true "Desktop rendering - Current & Forecast data showing") -->
 
 ### Mobile rendering - Current & Forecast data
 
-![Mobile rendering - Current & Forecast data](./screenshots/weather-app-iphoneX-current-forecast.png?raw=true "Mobile rendering - Current & Forecast data showing")
+<!-- ![Mobile rendering - Current & Forecast data](./screenshots/weather-app-iphoneX-current-forecast.png?raw=true "Mobile rendering - Current & Forecast data showing") -->
 
 ### Desktop rendering - Current data only
 
-![Desktop rendering - Current data only](./screenshots/weather-app-desktop-current.png?raw=true "Desktop rendering - Current data only")
+<!-- ![Desktop rendering - Current data only](./screenshots/weather-app-desktop-current.png?raw=true "Desktop rendering - Current data only") -->
 
 ### Mobile rendering - Current data only
 
-![Mobile rendering - Current data only](./screenshots/weather-app-iphoneX-current.png?raw=true "Mobile rendering - Current data only")
+<!-- ![Mobile rendering - Current data only](./screenshots/weather-app-iphoneX-current.png?raw=true "Mobile rendering - Current data only") -->
 
 ### Desktop rendering - Forecast data only
 
-![Desktop rendering - Forecast data only](./screenshots/weather-app-desktop-forecast.png?raw=true "Desktop rendering - Forecast data only")
+<!-- ![Desktop rendering - Forecast data only](./screenshots/weather-app-desktop-forecast.png?raw=true "Desktop rendering - Forecast data only") -->
 
 ### Mobile rendering - Forecast data only
 
-![Mobile rendering - Forecast data only](./screenshots/weather-app-iphoneX-forecast.PNG?raw=true "Mobile rendering - Forecast data only")
+<!-- ![Mobile rendering - Forecast data only](./screenshots/weather-app-iphoneX-forecast.PNG?raw=true "Mobile rendering - Forecast data only") -->
 
 ## Tech/framework used
 
