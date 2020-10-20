@@ -15,14 +15,14 @@ const Display = () => {
     <div className="cards-display">
       <WeatherCard
         dataCurrent={dataCurrent}
-        active={!active}
+        className={!active ? "active" : ""}
         onClick={() => setActive(true)}
       />
       {arrayForecast.map((item) => (
         <WeatherCard
           key={item.dt}
           item={item}
-          active={active} // this is actually wrong as all forecast cards at once will activate
+          className={active ? "active" : ""} // this is actually wrong as all forecast cards at once will activate
           onClick={() => setActive(true)}
         />
       ))}
