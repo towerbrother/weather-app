@@ -29,8 +29,6 @@ p {
   align-items: center;
   display: flex;
   justify-content: center;
-  .icon {
-  }
   .temperatures {
     align-items: center;
     display: flex;
@@ -53,24 +51,5 @@ p {
   .card-container {
     margin: $m-size;
     box-shadow: 5px 8px 6px $off-white;
-  }
-
-  .first-row {
-    .date {
-    }
-  }
-
-  .second-row {
-    .icon {
-    }
-    .temperatures {
-      .temp {
-      }
-    }
-  }
-
-  .third-row {
-    .description {
-    }
   }
 }
