@@ -14,19 +14,23 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
     );
   };
 
-  const displayDate = (n) => {
+  const displayDate = (date) => {
+    const dateArray = new Date(date).toString().split(" ");
+    const day = dateArray[0];
+    const n = dateArray[2];
+
     if (n === "01") {
       return n.slice(1, 2) + "st";
     } else if (n === "21" || n === "31") {
-      return n + "st";
+      return day + " " + n + "st";
     } else if (n === "02") {
-      return n.slice(1, 2) + "nd";
+      return day + " " + n.slice(1, 2) + "nd";
     } else if (n === "22") {
-      return n + "nd";
+      return day + " " + n + "nd";
     } else if (n === "03") {
-      return n.slice(1, 2) + "rd";
+      return day + " " + n.slice(1, 2) + "rd";
     } else if (n === "23") {
-      return n + "rd";
+      return day + " " + n + "rd";
     } else if (
       n === "04" ||
       n === "05" ||
@@ -35,9 +39,9 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
       n === "08" ||
       n === "09"
     ) {
-      return n.slice(1, 2) + "th";
+      return day + " " + n.slice(1, 2) + "th";
     } else {
-      return n + "th";
+      return day + " " + n + "th";
     }
   };
 
@@ -95,7 +99,7 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
         <>
           <div className="primary-container">
             <div className="primary-first-row">
-              <h3 className="date">{displayDate(item.dt_txt.slice(8, 10))}</h3>
+              <h3 className="date">{displayDate(item.dt_txt)}</h3>
             </div>
             <div className="primary-second-row">
               <div className="icon">
@@ -174,7 +178,7 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
         <>
           <div className="primary-container">
             <div className="primary-first-row">
-              <h3 className="date">{displayDate(item.dt_txt.slice(8, 10))}</h3>
+              <h3 className="date">{displayDate(item.dt_txt)}</h3>
             </div>
             <div className="primary-second-row">
               <div className="icon">

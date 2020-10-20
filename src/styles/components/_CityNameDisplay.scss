@@ -16,6 +16,6 @@ p {
 @media (min-width: $desktop-breakpoint) {
   .city-name {
     font-size: $xl-size;
-    margin-top: $xl-size;
+    margin: $xl-size 0;
   }
 }
