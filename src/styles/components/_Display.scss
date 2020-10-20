@@ -1,0 +1,12 @@
+.cards-display {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .cards-display {
+    flex-direction: row;
+  }
+}

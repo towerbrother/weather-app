@@ -12,7 +12,7 @@ const Display = () => {
   const [active, setActive] = useState(false);
 
   return (
-    <>
+    <div className="cards-display">
       <WeatherCard
         dataCurrent={dataCurrent}
         active={!active}
@@ -26,7 +26,7 @@ const Display = () => {
           onClick={() => setActive(true)}
         />
       ))}
-    </>
+    </div>
   );
 };
 
