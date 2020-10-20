@@ -10,6 +10,8 @@ p {
 
 // mobile
 .card-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .primary-container {

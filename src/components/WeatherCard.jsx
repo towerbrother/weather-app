@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import WeatherContext from "../context/weatherContext";
 
 const WeatherCard = ({ active, dataCurrent, item }) => {
