@@ -6,39 +6,13 @@ App deployed with [GitHub Pages](https://pages.github.com/) at https://towerbrot
 
 ## Motivation
 
-The App has been build as learning opportunity during my path to become a Software Engineer (self-taught). It is the very first App I built as part of the journey.
-
-## Screenshots
-
-### Desktop rendering - Current & Forecast data
-
-<!-- ![Desktop rendering - Current & Forecast data](./screenshots/weather-app-desktop-current-forecast.png?raw=true "Desktop rendering - Current & Forecast data showing") -->
-
-### Mobile rendering - Current & Forecast data
-
-<!-- ![Mobile rendering - Current & Forecast data](./screenshots/weather-app-iphoneX-current-forecast.png?raw=true "Mobile rendering - Current & Forecast data showing") -->
-
-### Desktop rendering - Current data only
-
-<!-- ![Desktop rendering - Current data only](./screenshots/weather-app-desktop-current.png?raw=true "Desktop rendering - Current data only") -->
-
-### Mobile rendering - Current data only
-
-<!-- ![Mobile rendering - Current data only](./screenshots/weather-app-iphoneX-current.png?raw=true "Mobile rendering - Current data only") -->
-
-### Desktop rendering - Forecast data only
-
-<!-- ![Desktop rendering - Forecast data only](./screenshots/weather-app-desktop-forecast.png?raw=true "Desktop rendering - Forecast data only") -->
-
-### Mobile rendering - Forecast data only
-
-<!-- ![Mobile rendering - Forecast data only](./screenshots/weather-app-iphoneX-forecast.PNG?raw=true "Mobile rendering - Forecast data only") -->
+The App has been build as learning opportunity during my path to become a Software Engineer (self-taught).
 
 ## Tech/framework used
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and built using the following technologies:
 
-- React
+- React (incl. Hooks)
 - Javascript
 - SASS
 
@@ -48,7 +22,7 @@ The App allows users to fetch current data as well as forecast data for the 5 da
 
 The App allows temperatures to be shown in metric as well as imperial unit measure system.
 
-The App is fully responsive and it ensures a pleasant UX in mobile as well as using desktop devices. Some of the information disappear when resizing.
+The App is fully responsive and it ensures a pleasant UX in mobile as well as using desktop devices.
 
 ## API Reference
 
