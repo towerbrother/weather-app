@@ -1,11 +1,13 @@
 @import "./base/settings";
 @import "./base/base";
 @import "./components/App";
+@import "./components/container";
 @import "./components/CurrentDisplay";
-@import "./components/ForecastDisplay";
-@import "./components/Form";
-@import "./components/Input";
 @import "./components/Error";
 @import "./components/Footer";
+@import "./components/ForecastDisplay";
+@import "./components/Form";
 @import "./components/Header";
-@import "./components/container";
+@import "./components/Input";
+@import "./components/LoadingPage";
+@import "./components/WeatherCard";
