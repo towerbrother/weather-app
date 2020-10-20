@@ -9,13 +9,13 @@ p {
 }
 
 .city-name {
-  font-size: $l-size;
+  font-size: $xl-size;
   margin: 0;
 }
 
 @media (min-width: $desktop-breakpoint) {
   .city-name {
-    font-size: $xl-size;
-    margin: $xl-size 0;
+    font-size: $xxl-size;
+    margin: $l-size 0 0 0;
   }
 }

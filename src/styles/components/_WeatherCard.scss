@@ -8,104 +8,69 @@ p {
   margin: 0;
 }
 
-// mobile
 .card-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  padding: $xs-size;
+  border: 3px $off-white solid;
+  border-radius: $xs-size;
+  margin: $m-size;
+  min-width: 200px;
 }
 
-.primary-container {
-}
-
-.primary-first-row {
+.first-row {
   .date {
+    font-size: $m-size;
+    text-decoration: underline;
   }
 }
 
-.primary-second-row {
+.second-row {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   .icon {
   }
   .temperatures {
-    .max-temp {
-    }
-    .min-temp {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .temp {
+      font-size: $m-size;
+      padding: $xs-size;
     }
   }
 }
 
-.secondary-container {
+.third-row {
   .description {
+    font-size: $m-size;
   }
 }
 
-// desktop
 @media (min-width: $desktop-breakpoint) {
   .card-container {
+    margin: $m-size;
+    box-shadow: 5px 8px 6px $off-white;
   }
 
-  .primary-container {
-  }
-
-  .primary-first-row {
+  .first-row {
     .date {
     }
   }
 
-  .primary-second-row {
+  .second-row {
     .icon {
     }
     .temperatures {
-      .max-temp {
-      }
-      .min-temp {
+      .temp {
       }
     }
   }
 
-  .secondary-container {
+  .third-row {
     .description {
     }
   }
 }
-
-// MOBILE
-// #icon {
-//     max-width: 6rem;
-//     max-height: auto;
-//   }
-// .current-min-temp {
-//     font-size: $m-size;
-//     margin-right: $m-size;
-//   }
-
-//   .current-max-temp {
-//     font-size: $m-size;
-//     margin-left: $m-size;
-//   }
-
-//   .current-description {
-//     font-size: $m-size;
-//     margin-top: $xs-size;
-//     margin-bottom: $xs-size;
-//   }
-
-// DESKTOP
-// #icon {
-//     max-width: 100%;
-//     max-height: auto;
-//   }
-// .current-temp {
-//     font-size: $l-size;
-//   }
-
-//   .current-min-temp {
-//     font-size: $l-size;
-//   }
-
-//   .current-max-temp {
-//     font-size: $l-size;
-//   }
-
-//   .current-description {
-//     font-size: $l-size;
-//   }

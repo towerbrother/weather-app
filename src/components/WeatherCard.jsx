@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import WeatherContext from "../context/weatherContext";
 
-const WeatherCard = ({ active, dataCurrent, item }) => {
+const WeatherCard = ({ dataCurrent, item }) => {
   const { unitMeasure } = useContext(WeatherContext);
 
   const displayWeatherIcon = (iconId) => {
@@ -45,169 +45,90 @@ const WeatherCard = ({ active, dataCurrent, item }) => {
     }
   };
 
-  const convertCelsius = (temp) => Math.round((temp - 273.15) * 10) / 10;
+  const convertCelsius = (temp) =>
+    (Math.round((temp - 273.15) * 10) / 10).toFixed(1);
 
   const convertFahrenheit = (celsius) =>
-    Math.round((celsius * 1.8 + 32) * 10) / 10;
+    (Math.round((celsius * 1.8 + 32) * 10) / 10).toFixed(1);
 
   return (
     <div className="card-container">
-      {active && dataCurrent ? (
+      {dataCurrent ? (
         <>
-          <div className="primary-container">
-            <div className="primary-first-row">
-              <h3 className="date">Today</h3>
+          <div className="first-row">
+            <h3 className="date">Today</h3>
+          </div>
+          <div className="second-row">
+            <div className="icon">
+              {displayWeatherIcon(dataCurrent.weather[0].icon)}
             </div>
-            <div className="primary-second-row">
-              <div className="icon">
-                {displayWeatherIcon(dataCurrent.weather[0].icon)}
-              </div>
-              <div className="temperatures">
-                {unitMeasure === "metric" ? (
-                  <>
-                    <span className="max-temp">
-                      {convertCelsius(dataCurrent.main.temp_max)}&deg;C
-                    </span>
-                    <span className="min-temp">
-                      {convertCelsius(dataCurrent.main.temp_min)}&deg;C
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className="max-temp">
-                      {convertFahrenheit(
-                        convertCelsius(dataCurrent.main.temp_max)
-                      )}
-                      &deg;F
-                    </span>
-                    <span className="min-temp">
-                      {convertFahrenheit(
-                        convertCelsius(dataCurrent.main.temp_min)
-                      )}
-                      &deg;F
-                    </span>
-                  </>
-                )}
-              </div>
+            <div className="temperatures">
+              {unitMeasure === "metric" ? (
+                <>
+                  <span className="temp">
+                    {convertCelsius(dataCurrent.main.temp_max)}&deg;C
+                  </span>
+                  <span className="temp">
+                    {convertCelsius(dataCurrent.main.temp_min)}&deg;C
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="temp">
+                    {convertFahrenheit(
+                      convertCelsius(dataCurrent.main.temp_max)
+                    )}
+                    &deg;F
+                  </span>
+                  <span className="temp">
+                    {convertFahrenheit(
+                      convertCelsius(dataCurrent.main.temp_min)
+                    )}
+                    &deg;F
+                  </span>
+                </>
+              )}
             </div>
           </div>
-          <div className="secondary-container">
+          <div className="third-row">
             <p className="description">{dataCurrent.weather[0].description}</p>
-          </div>
-        </>
-      ) : active && item ? (
-        <>
-          <div className="primary-container">
-            <div className="primary-first-row">
-              <h3 className="date">{displayDate(item.dt_txt)}</h3>
-            </div>
-            <div className="primary-second-row">
-              <div className="icon">
-                {displayWeatherIcon(item.weather[0].icon)}
-              </div>
-              <div className="temperatures">
-                {unitMeasure === "metric" ? (
-                  <>
-                    <span className="max-temp">
-                      {convertCelsius(item.main.temp_max)}&deg;C
-                    </span>
-                    <span className="min-temp">
-                      {convertCelsius(item.main.temp_min)}&deg;C
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className="max-temp">
-                      {convertFahrenheit(convertCelsius(item.main.temp_max))}
-                      &deg;F
-                    </span>
-                    <span className="min-temp">
-                      {convertFahrenheit(convertCelsius(item.main.temp_min))}
-                      &deg;F
-                    </span>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="secondary-container">
-            <p className="description">{item.weather[0].description}</p>
-          </div>
-        </>
-      ) : !active && dataCurrent ? (
-        <>
-          <div className="primary-container">
-            <div className="primary-first-row">
-              <h3 className="date">Today</h3>
-            </div>
-            <div className="primary-second-row">
-              <div className="icon">
-                {displayWeatherIcon(dataCurrent.weather[0].icon)}
-              </div>
-              <div className="temperatures">
-                {unitMeasure === "metric" ? (
-                  <>
-                    <span className="max-temp">
-                      {convertCelsius(dataCurrent.main.temp_max)}&deg;C
-                    </span>
-                    <span className="min-temp">
-                      {convertCelsius(dataCurrent.main.temp_min)}&deg;C
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className="max-temp">
-                      {convertFahrenheit(
-                        convertCelsius(dataCurrent.main.temp_max)
-                      )}
-                      &deg;F
-                    </span>
-                    <span className="min-temp">
-                      {convertFahrenheit(
-                        convertCelsius(dataCurrent.main.temp_min)
-                      )}
-                      &deg;F
-                    </span>
-                  </>
-                )}
-              </div>
-            </div>
           </div>
         </>
       ) : (
         <>
-          <div className="primary-container">
-            <div className="primary-first-row">
-              <h3 className="date">{displayDate(item.dt_txt)}</h3>
+          <div className="first-row">
+            <h3 className="date">{displayDate(item.dt_txt)}</h3>
+          </div>
+          <div className="second-row">
+            <div className="icon">
+              {displayWeatherIcon(item.weather[0].icon)}
             </div>
-            <div className="primary-second-row">
-              <div className="icon">
-                {displayWeatherIcon(item.weather[0].icon)}
-              </div>
-              <div className="temperatures">
-                {unitMeasure === "metric" ? (
-                  <>
-                    <span className="max-temp">
-                      {convertCelsius(item.main.temp_max)}&deg;C
-                    </span>
-                    <span className="min-temp">
-                      {convertCelsius(item.main.temp_min)}&deg;C
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className="max-temp">
-                      {convertFahrenheit(convertCelsius(item.main.temp_max))}
-                      &deg;F
-                    </span>
-                    <span className="min-temp">
-                      {convertFahrenheit(convertCelsius(item.main.temp_min))}
-                      &deg;F
-                    </span>
-                  </>
-                )}
-              </div>
+            <div className="temperatures">
+              {unitMeasure === "metric" ? (
+                <>
+                  <span className="temp">
+                    {convertCelsius(item.main.temp_max)}&deg;C
+                  </span>
+                  <span className="temp">
+                    {convertCelsius(item.main.temp_min)}&deg;C
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="temp">
+                    {convertFahrenheit(convertCelsius(item.main.temp_max))}
+                    &deg;F
+                  </span>
+                  <span className="temp">
+                    {convertFahrenheit(convertCelsius(item.main.temp_min))}
+                    &deg;F
+                  </span>
+                </>
+              )}
             </div>
+          </div>
+          <div className="third-row">
+            <p className="description">{item.weather[0].description}</p>
           </div>
         </>
       )}

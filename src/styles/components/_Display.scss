@@ -8,7 +8,10 @@
 @media (min-width: $desktop-breakpoint) {
   .cards-display {
     flex-direction: row;
-    flex-wrap: nowrap;
-    margin-top: $xxl-size;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: $m-size;
+    max-width: 55vw;
   }
 }

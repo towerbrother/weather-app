@@ -12,7 +12,7 @@
   border-radius: 3%;
   color: $off-white;
   font-size: $l-size;
-  margin: $s-size 0 $xs-size 0;
+  margin: $m-size;
 }
 
 #city,
@@ -22,7 +22,7 @@
   font-size: $l-size;
   border: none;
   border-bottom: 1px solid $off-white;
-  margin: 0 $s-size $s-size $m-size;
+  margin: $m-size;
   max-width: 20rem;
 }
 
@@ -33,18 +33,18 @@
 @media (min-width: $desktop-breakpoint) {
   .input-container {
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: $m-size;
   }
 
   .button {
     font-size: $xl-size;
-    margin: 0;
+    margin: 0 $l-size;
   }
 
   #city,
   #country {
     font-size: $xl-size;
-    margin-bottom: 0;
+    margin: 0 $l-size;
   }
 }
