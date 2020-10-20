@@ -1,0 +1,21 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+.city-name {
+  font-size: $l-size;
+  margin: 0;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .city-name {
+    font-size: $xl-size;
+    margin-top: $xl-size;
+  }
+}
