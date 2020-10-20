@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import CityNameDisplay from "./CityNameDisplay";
-import Display from "./Display";
+import Display from "./weather-cards/Display";
 import WeatherContext from "./../context/weatherContext";
 
 const Weather = () => {
