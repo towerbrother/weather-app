@@ -15,7 +15,7 @@ const WeatherCard = ({ dataCurrent, item }) => {
   };
 
   const displayDate = (date) => {
-    const dateArray = new Date(date).toString().split(" ");
+    const dateArray = new Date(date.replace(/-/g, "/")).toString().split(" ");
     const day = dateArray[0];
     const n = dateArray[2];
 
