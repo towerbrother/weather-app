@@ -101,7 +101,7 @@ const App = () => {
             )}
           </div>
         </div>
-        <Footer />
+        <Footer url="https://towerbrother.github.io/portfolio-app" />
       </WeatherContext.Provider>
     </div>
   );

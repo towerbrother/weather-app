@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import Header from "./Header";
 
-test("renders Header correctly", () => {
+test("renders <Header /> correctly", () => {
   const testTitle = "Test title";
   const testSubtitle = "Test subtitle";
 

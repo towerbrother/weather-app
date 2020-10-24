@@ -14,8 +14,8 @@ test("renders <Footer /> correctly", () => {
 });
 
 test("should navigate to correct url", () => {
-  render(<Footer />);
+  const urlTest = "https://test.com/";
+  render(<Footer url={urlTest} />);
   const link = screen.getByText(/Giorgio Torre/i);
-  expect(link.href).toBe("https://towerbrother.github.io/portfolio-app");
-  fireEvent.click(link);
+  expect(link.href).toBe(urlTest);
 });
