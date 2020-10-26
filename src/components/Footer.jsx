@@ -1,7 +1,7 @@
 import React from "react";
 import Radio from "./Radio";
 
-const Footer = ({ url }) => (
+const Footer = ({ url, author }) => (
   <div className="footer">
     <div className="container">
       <h5 className="footer__text">
@@ -12,7 +12,7 @@ const Footer = ({ url }) => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          Giorgio Torre
+          {author}
         </a>
       </h5>
       <div className="boxes-container">

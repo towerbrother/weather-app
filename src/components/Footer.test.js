@@ -1,21 +1,22 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Footer from "./Footer";
 
 jest.mock("./Radio", () => () => <div>Radio buttons</div>);
 
 test("renders <Footer /> correctly", () => {
-  const { container } = render(<Footer />);
-  const link = screen.getByText(/Giorgio Torre/i);
+  const authorTest = "author";
+  const { container } = render(<Footer author={authorTest} />);
+  const link = screen.getByText(authorTest);
 
-  expect(screen.getByText(/Created by/i)).not.toBeNull();
   expect(link).not.toBeNull();
   expect(container.textContent).toMatch("Radio buttons");
 });
 
 test("should navigate to correct url", () => {
   const urlTest = "https://test.com/";
-  render(<Footer url={urlTest} />);
-  const link = screen.getByText(/Giorgio Torre/i);
+  const authorTest = "author";
+  render(<Footer author={authorTest} url={urlTest} />);
+  const link = screen.getByText(authorTest);
   expect(link.href).toBe(urlTest);
 });
