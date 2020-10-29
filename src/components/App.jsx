@@ -3,11 +3,13 @@ import Form from "./Form";
 import Weather from "./Weather";
 import Error from "./Error";
 import LoadingPage from "./LoadingPage";
-import WeatherContext from "./../context/weatherContext";
 import Footer from "./Footer";
 import Header from "./Header";
+import WeatherContext from "./../context/weatherContext";
+import { getWeatherData } from "./../utils/utils";
+import { currentContent, forecastContent } from "./../utils/constants";
 
-const API = "f9b82988a14039290e02b95f5e395184";
+export const API = "f9b82988a14039290e02b95f5e395184";
 
 const App = () => {
   const [err, setErr] = useState(null);
@@ -15,6 +17,8 @@ const App = () => {
   const [dataCurrent, setDataCurrent] = useState(null);
   const [dataForecast, setDataForecast] = useState(null);
   const [unitMeasure, setUnitMeasure] = useState("metric");
+
+  // these two could become a single custom hook
   const [queryStringCity, setQueryStringCity] = useState("");
   const [queryStringCountry, setQueryStringCountry] = useState("");
 
@@ -30,39 +34,60 @@ const App = () => {
     setErr(null);
     setDataCurrent(null);
     setDataForecast(null);
-    setLoading(true);
 
-    fetch(
-      `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
-    )
-      .then((res) => {
-        if (!res.ok) throw res;
-        return res.json();
-      })
-      .then((dataCurrent) => {
-        setDataCurrent(dataCurrent);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setErr(err);
-        setLoading(loading - 1);
-      });
+    getWeatherData(
+      currentContent,
+      queryStringCity,
+      queryStringCountry,
+      setDataCurrent
+    ).catch((err) => {
+      setErr(err);
+      // setLoading(loading - 1);
+      setLoading(true);
+    });
 
-    fetch(
-      `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
-    )
-      .then((res) => {
-        if (!res.ok) throw res;
-        return res.json();
-      })
-      .then((dataForecast) => {
-        setDataForecast(dataForecast);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setErr(err);
-        setLoading(loading - 1);
-      });
+    getWeatherData(
+      forecastContent,
+      queryStringCity,
+      queryStringCountry,
+      setDataForecast
+    ).catch((err) => {
+      setErr(err);
+      // setLoading(loading - 1);
+      setLoading(true);
+    });
+
+    // fetch(
+    //   `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
+    // )
+    //   .then((res) => {
+    //     if (!res.ok) throw res;
+    //     return res.json();
+    //   })
+    //   .then((dataCurrent) => {
+    //     setDataCurrent(dataCurrent);
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => {
+    //     setErr(err);
+    //     setLoading(loading - 1);
+    //   });
+
+    // fetch(
+    //   `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
+    // )
+    //   .then((res) => {
+    //     if (!res.ok) throw res;
+    //     return res.json();
+    //   })
+    //   .then((dataForecast) => {
+    //     setDataForecast(dataForecast);
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => {
+    //   setErr(err);
+    //   setLoading(loading - 1);
+    // });
 
     setQueryStringCity("");
     setQueryStringCountry("");
