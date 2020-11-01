@@ -6,7 +6,7 @@ const CityNameDisplay = () => {
 
   return (
     <h1 className="city-name">
-      {dataCurrent.name}, {dataCurrent.sys.country}
+      {`${dataCurrent.name}, ${dataCurrent.sys.country}`}
     </h1>
   );
 };

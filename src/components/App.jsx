@@ -3,9 +3,9 @@ import Form from "./Form";
 import Weather from "./Weather";
 import Error from "./Error";
 import LoadingPage from "./LoadingPage";
-import WeatherContext from "./../context/weatherContext";
 import Footer from "./Footer";
 import Header from "./Header";
+import WeatherContext from "./../context/weatherContext";
 
 const API = "f9b82988a14039290e02b95f5e395184";
 

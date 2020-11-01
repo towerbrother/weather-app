@@ -15,12 +15,12 @@ const WeatherCard = ({ dataCurrent, item }) => {
   };
 
   const displayDate = (date) => {
-    const dateArray = new Date(date.replace(/-/g, "/")).toString().split(" ");
+    const dateArray = new Date(date).toString().split(" ");
     const day = dateArray[0];
     const n = dateArray[2];
 
     if (n === "01") {
-      return n.slice(1, 2) + "st";
+      return day + " " + n.slice(1, 2) + "st";
     } else if (n === "21" || n === "31") {
       return day + " " + n + "st";
     } else if (n === "02") {
