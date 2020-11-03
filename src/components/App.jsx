@@ -6,8 +6,13 @@ import LoadingPage from "./LoadingPage";
 import Footer from "./Footer";
 import Header from "./Header";
 import WeatherContext from "./../context/weatherContext";
+<<<<<<< HEAD
 
 const API = "f9b82988a14039290e02b95f5e395184";
+=======
+import { getWeatherData } from "../utils/utils";
+import { CURRENT, FORECAST } from "./../utils/constants";
+>>>>>>> fetchTest
 
 const App = () => {
   const [err, setErr] = useState(null);
@@ -15,6 +20,8 @@ const App = () => {
   const [dataCurrent, setDataCurrent] = useState(null);
   const [dataForecast, setDataForecast] = useState(null);
   const [unitMeasure, setUnitMeasure] = useState("metric");
+
+  // these two could become a single custom hook
   const [queryStringCity, setQueryStringCity] = useState("");
   const [queryStringCountry, setQueryStringCountry] = useState("");
 
@@ -28,41 +35,30 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErr(null);
-    setDataCurrent(null);
-    setDataForecast(null);
-    setLoading(true);
 
-    fetch(
-      `${window.location.protocol}//api.openweathermap.org/data/2.5/weather?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
-    )
-      .then((res) => {
-        if (!res.ok) throw res;
-        return res.json();
-      })
-      .then((dataCurrent) => {
-        setDataCurrent(dataCurrent);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setErr(err);
-        setLoading(loading - 1);
-      });
+    try {
+      getWeatherData(
+        CURRENT,
+        queryStringCity,
+        queryStringCountry,
+        setDataCurrent
+      );
+    } catch (err) {
+      setErr(err);
+      setLoading(loading - 1);
+    }
 
-    fetch(
-      `${window.location.protocol}//api.openweathermap.org/data/2.5/forecast?q=${queryStringCity},${queryStringCountry}&APPID=${API}`
-    )
-      .then((res) => {
-        if (!res.ok) throw res;
-        return res.json();
-      })
-      .then((dataForecast) => {
-        setDataForecast(dataForecast);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setErr(err);
-        setLoading(loading - 1);
-      });
+    try {
+      getWeatherData(
+        FORECAST,
+        queryStringCity,
+        queryStringCountry,
+        setDataForecast
+      );
+    } catch (err) {
+      setErr(err);
+      setLoading(loading - 1);
+    }
 
     setQueryStringCity("");
     setQueryStringCountry("");
