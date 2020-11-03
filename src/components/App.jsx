@@ -6,13 +6,8 @@ import LoadingPage from "./LoadingPage";
 import Footer from "./Footer";
 import Header from "./Header";
 import WeatherContext from "./../context/weatherContext";
-<<<<<<< HEAD
-
-const API = "f9b82988a14039290e02b95f5e395184";
-=======
 import { getWeatherData } from "../utils/utils";
 import { CURRENT, FORECAST } from "./../utils/constants";
->>>>>>> fetchTest
 
 const App = () => {
   const [err, setErr] = useState(null);
