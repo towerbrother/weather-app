@@ -10,5 +10,6 @@ export const fetchData = async (
     `${window.location.protocol}//api.openweathermap.org/data/2.5/${content}?q=${queryStringCity},${queryStringCountry}&APPID=${key}`
   );
   const data = await response.json();
+  console.log("fetching from real API...");
   return data;
 };

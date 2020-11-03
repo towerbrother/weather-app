@@ -6,10 +6,8 @@ import LoadingPage from "./LoadingPage";
 import Footer from "./Footer";
 import Header from "./Header";
 import WeatherContext from "./../context/weatherContext";
-import { fetchData } from "./../utils/fetch";
-import { current, forecast } from "./../utils/constants";
-
-export const API = "f9b82988a14039290e02b95f5e395184";
+import { getWeatherData } from "../utils/utils";
+import { CURRENT, FORECAST } from "./../utils/constants";
 
 const App = () => {
   const [err, setErr] = useState(null);
@@ -21,16 +19,6 @@ const App = () => {
   // these two could become a single custom hook
   const [queryStringCity, setQueryStringCity] = useState("");
   const [queryStringCountry, setQueryStringCountry] = useState("");
-
-  const getWeatherData = async (
-    content,
-    queryStringCity,
-    queryStringCountry,
-    callback
-  ) => {
-    const data = await fetchData(content, queryStringCity, queryStringCountry);
-    callback(data);
-  };
 
   const handleChange = (e) => {
     setQueryStringCountry("");
@@ -45,7 +33,7 @@ const App = () => {
 
     try {
       getWeatherData(
-        current,
+        CURRENT,
         queryStringCity,
         queryStringCountry,
         setDataCurrent
@@ -57,7 +45,7 @@ const App = () => {
 
     try {
       getWeatherData(
-        forecast,
+        FORECAST,
         queryStringCity,
         queryStringCountry,
         setDataForecast
