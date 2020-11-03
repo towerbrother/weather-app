@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/weather-app/static/css/main.2ff19bad.chunk.css",
-    "main.js": "/weather-app/static/js/main.57e85876.chunk.js",
-    "main.js.map": "/weather-app/static/js/main.57e85876.chunk.js.map",
+    "main.css": "/weather-app/static/css/main.63b2271b.chunk.css",
+    "main.js": "/weather-app/static/js/main.16b87bad.chunk.js",
+    "main.js.map": "/weather-app/static/js/main.16b87bad.chunk.js.map",
     "runtime-main.js": "/weather-app/static/js/runtime-main.32031a9c.js",
     "runtime-main.js.map": "/weather-app/static/js/runtime-main.32031a9c.js.map",
     "static/css/2.764ccc25.chunk.css": "/weather-app/static/css/2.764ccc25.chunk.css",
-    "static/js/2.cabe9574.chunk.js": "/weather-app/static/js/2.cabe9574.chunk.js",
-    "static/js/2.cabe9574.chunk.js.map": "/weather-app/static/js/2.cabe9574.chunk.js.map",
+    "static/js/2.728f2954.chunk.js": "/weather-app/static/js/2.728f2954.chunk.js",
+    "static/js/2.728f2954.chunk.js.map": "/weather-app/static/js/2.728f2954.chunk.js.map",
     "index.html": "/weather-app/index.html",
-    "precache-manifest.35c079e2fedcf32bdfcab68084ffbb7b.js": "/weather-app/precache-manifest.35c079e2fedcf32bdfcab68084ffbb7b.js",
+    "precache-manifest.6ecd9118c797471738dffe2a20e772ea.js": "/weather-app/precache-manifest.6ecd9118c797471738dffe2a20e772ea.js",
     "service-worker.js": "/weather-app/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/weather-app/static/css/2.764ccc25.chunk.css.map",
-    "static/css/main.2ff19bad.chunk.css.map": "/weather-app/static/css/main.2ff19bad.chunk.css.map"
+    "static/css/main.63b2271b.chunk.css.map": "/weather-app/static/css/main.63b2271b.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.32031a9c.js",
     "static/css/2.764ccc25.chunk.css",
-    "static/js/2.cabe9574.chunk.js",
-    "static/css/main.2ff19bad.chunk.css",
-    "static/js/main.57e85876.chunk.js"
+    "static/js/2.728f2954.chunk.js",
+    "static/css/main.63b2271b.chunk.css",
+    "static/js/main.16b87bad.chunk.js"
   ]
 }
