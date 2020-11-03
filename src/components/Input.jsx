@@ -1,10 +1,10 @@
 import React from "react";
 
 const Input = ({ label, ...props }) => (
-  <div>
-    {label && <label htmlFor={props.id}>{label}</label>}
+  <label htmlFor={props.id}>
+    {label && label}
     <input {...props} autoComplete="off" />
-  </div>
+  </label>
 );
 
 export default Input;

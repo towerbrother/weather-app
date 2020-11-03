@@ -15,7 +15,7 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <Input
-            label=""
+            aria-label="city"
             id="city"
             type="text"
             name="queryStringCity"
@@ -24,7 +24,7 @@ const Form = () => {
             value={queryStringCity}
           />
           <Input
-            label=""
+            aria-label="country"
             id="country"
             type="text"
             name="queryStringCountry"
