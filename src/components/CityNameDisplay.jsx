@@ -5,9 +5,11 @@ const CityNameDisplay = () => {
   const { dataCurrent } = useContext(WeatherContext);
 
   return (
-    <h1 className="city-name">
-      {`${dataCurrent.name}, ${dataCurrent.sys.country}`}
-    </h1>
+    <div>
+      <h1 className="city-name">
+        <span>{dataCurrent.name}</span> <span>{dataCurrent.sys.country}</span>
+      </h1>
+    </div>
   );
 };
 

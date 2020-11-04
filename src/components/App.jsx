@@ -31,29 +31,25 @@ const App = () => {
     e.preventDefault();
     setErr(null);
 
-    try {
-      getWeatherData(
-        CURRENT,
-        queryStringCity,
-        queryStringCountry,
-        setDataCurrent
-      );
-    } catch (err) {
+    getWeatherData(
+      CURRENT,
+      queryStringCity,
+      queryStringCountry,
+      setDataCurrent
+    ).catch((err) => {
       setErr(err);
       setLoading(loading - 1);
-    }
+    });
 
-    try {
-      getWeatherData(
-        FORECAST,
-        queryStringCity,
-        queryStringCountry,
-        setDataForecast
-      );
-    } catch (err) {
+    getWeatherData(
+      FORECAST,
+      queryStringCity,
+      queryStringCountry,
+      setDataForecast
+    ).catch((err) => {
       setErr(err);
       setLoading(loading - 1);
-    }
+    });
 
     setQueryStringCity("");
     setQueryStringCountry("");
@@ -88,7 +84,7 @@ const App = () => {
             {loading ? (
               <LoadingPage />
             ) : (
-              dataCurrent && dataForecast && <Weather />
+              !err && dataCurrent && dataForecast && <Weather />
             )}
           </div>
         </div>
