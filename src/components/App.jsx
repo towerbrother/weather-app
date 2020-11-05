@@ -15,7 +15,6 @@ const App = () => {
   const [dataCurrent, setDataCurrent] = useState(null);
   const [dataForecast, setDataForecast] = useState(null);
   const [unitMeasure, setUnitMeasure] = useState("metric");
-
   // these two could become a single custom hook
   const [queryStringCity, setQueryStringCity] = useState("");
   const [queryStringCountry, setQueryStringCountry] = useState("");
@@ -30,26 +29,25 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErr(null);
+    setLoading(true);
 
     getWeatherData(
       CURRENT,
       queryStringCity,
       queryStringCountry,
-      setDataCurrent
-    ).catch((err) => {
-      setErr(err);
-      setLoading(loading - 1);
-    });
+      setDataCurrent,
+      setErr,
+      setLoading
+    );
 
     getWeatherData(
       FORECAST,
       queryStringCity,
       queryStringCountry,
-      setDataForecast
-    ).catch((err) => {
-      setErr(err);
-      setLoading(loading - 1);
-    });
+      setDataForecast,
+      setErr,
+      setLoading
+    );
 
     setQueryStringCity("");
     setQueryStringCountry("");

@@ -6,7 +6,7 @@ const Radio = () => {
   const { unitMeasure, handleRadioChecked } = useContext(WeatherContext);
 
   return (
-    <div className="radio">
+    <>
       <Input
         label="Metric"
         id="metric"
@@ -25,7 +25,7 @@ const Radio = () => {
         onChange={handleRadioChecked}
         checked={unitMeasure === "imperial"}
       />
-    </div>
+    </>
   );
 };
 

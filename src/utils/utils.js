@@ -4,8 +4,21 @@ export const getWeatherData = async (
   content,
   queryStringCity,
   queryStringCountry,
-  callback
+  callbackData,
+  callbackError,
+  callbackLoading
 ) => {
-  const data = await fetchData(content, queryStringCity, queryStringCountry);
-  callback(data);
+  const response = await fetchData(
+    content,
+    queryStringCity,
+    queryStringCountry
+  );
+  if (!response.ok) {
+    callbackError(response);
+    callbackLoading(true);
+  } else {
+    const data = await response.json();
+    callbackData(data);
+    callbackLoading(false);
+  }
 };
