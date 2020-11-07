@@ -1,23 +1,26 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Input from "./Input";
 
 describe("Input component when type text", () => {
-  it("it renders correctly", () => {
-    const testPlaceholder = "Test placeholder";
-    const { getByPlaceholderText } = render(
-      <Input type="text" placeholder={testPlaceholder} />
-    );
-    expect(getByPlaceholderText(testPlaceholder)).not.toBeNull(); // why .toBeInTheDocument() does not work?
+  const testPlaceholder = "Test placeholder";
+  render(<Input type="text" placeholder={testPlaceholder} />);
+  const input = screen.getByPlaceholderText(testPlaceholder);
+  it("renders correctly", () => {
+    expect(input).not.toBeNull();
+  });
+  it("updates value on change correctly", () => {
+    userEvent.type(input, "Test city");
+    expect(input.value).toBe("Test city");
   });
 });
 
 describe("Input component when type radio", () => {
   const testLabel = "Test label";
-  const testChecked = false;
-  // handleChange...
-  it("it renders correctly", () => {
-    const { getByLabelText } = render(<Input type="radio" label={testLabel} />);
-    expect(getByLabelText(testLabel)).not.toBeNull();
+  render(<Input type="radio" label={testLabel} />);
+  const radio = screen.getByLabelText(testLabel);
+  it("renders correctly", () => {
+    expect(radio).not.toBeNull();
   });
 });
