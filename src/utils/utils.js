@@ -15,7 +15,7 @@ export const getWeatherData = async (
   );
   if (!response.ok) {
     callbackError(response);
-    callbackLoading(true);
+    callbackLoading(false);
   } else {
     const data = await response.json();
     callbackData(data);
