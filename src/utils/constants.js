@@ -1,4 +1,4 @@
-export const API_KEY = "f9b82988a14039290e02b95f5e395184";
+export const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 export const CURRENT = "weather";
 
