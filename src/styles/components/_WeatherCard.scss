@@ -11,9 +11,9 @@ p {
 .card-container {
   display: flex;
   flex-direction: column;
-  padding: $xs-size;
-  border: 3px $off-white solid;
-  border-radius: $xs-size;
+  padding: $m-size;
+  border: 1px $off-white solid;
+  border-radius: 50%;
   margin: $m-size;
   min-width: 187px;
 }
@@ -21,7 +21,6 @@ p {
 .first-row {
   .date {
     font-size: $m-size;
-    text-decoration: underline;
   }
 }
 
@@ -36,7 +35,7 @@ p {
     justify-content: center;
     .temp {
       font-size: $m-size;
-      padding: $xs-size;
+      padding: $xxs-size $xs-size;
     }
   }
 }
@@ -50,6 +49,5 @@ p {
 @media (min-width: $desktop-breakpoint) {
   .card-container {
     margin: $m-size;
-    box-shadow: 5px 8px 6px $off-white;
   }
 }
