@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import Weather from "./Weather";
 import Error from "./Error";
@@ -6,7 +6,7 @@ import LoadingPage from "./LoadingPage";
 import Footer from "./Footer";
 import Header from "./Header";
 import WeatherContext from "./../context/weatherContext";
-import { getWeatherData } from "../utils/utils";
+import { getWeatherData, getInitialWeatherData } from "../utils/utils";
 import { CURRENT, FORECAST } from "./../utils/constants";
 
 const App = () => {
@@ -18,6 +18,33 @@ const App = () => {
   // these two could become a single custom hook
   const [queryStringCity, setQueryStringCity] = useState("");
   const [queryStringCountry, setQueryStringCountry] = useState("");
+
+  useEffect(() => {
+    const currentPositionWeather = async () => {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setErr(null);
+        setLoading(true);
+        getInitialWeatherData(
+          CURRENT,
+          position.coords.latitude,
+          position.coords.longitude,
+          setDataCurrent,
+          setErr,
+          setLoading
+        );
+        getInitialWeatherData(
+          FORECAST,
+          position.coords.latitude,
+          position.coords.longitude,
+          setDataForecast,
+          setErr,
+          setLoading
+        );
+      });
+    };
+
+    currentPositionWeather();
+  }, []);
 
   const handleChange = (e) => {
     setQueryStringCountry("");
