@@ -1,6 +1,11 @@
 import React from "react";
 
-const Header = ({ title, subtitle }) => (
+type HeaderType = {
+  title: string,
+  subtitle: string
+};
+
+const Header: ({ title, subtitle }: HeaderType) => JSX.Element = ({ title, subtitle }: HeaderType) => (
   <div className="header">
     <div className="container">
       <h1 className="header__title">{title}</h1>

@@ -5,22 +5,22 @@ import Error from "./Error";
 import LoadingPage from "./LoadingPage";
 import Footer from "./Footer";
 import Header from "./Header";
-import WeatherContext from "./../context/weatherContext";
+import WeatherContext from "../context/weatherContext";
 import { getWeatherData, getInitialWeatherData } from "../utils/utils";
-import { CURRENT, FORECAST } from "./../utils/constants";
+import { CURRENT, FORECAST } from "../utils/constants";
 
-const App = () => {
-  const [err, setErr] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [dataCurrent, setDataCurrent] = useState(null);
-  const [dataForecast, setDataForecast] = useState(null);
-  const [unitMeasure, setUnitMeasure] = useState("metric");
+const App: () => JSX.Element = () => {
+  const [err, setErr] = useState<boolean | null | Response>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [dataCurrent, setDataCurrent] = useState<any>(null);
+  const [dataForecast, setDataForecast] = useState<any>(null);
+  const [unitMeasure, setUnitMeasure] = useState<string>("metric");
   // these two could become a single custom hook
-  const [queryStringCity, setQueryStringCity] = useState("");
-  const [queryStringCountry, setQueryStringCountry] = useState("");
+  const [queryStringCity, setQueryStringCity] = useState<string>("");
+  const [queryStringCountry, setQueryStringCountry] = useState<string>("");
 
   useEffect(() => {
-    const currentPositionWeather = async () => {
+    const currentPositionWeather: () => Promise<void> = async () => {
       navigator.geolocation.getCurrentPosition((position) => {
         setErr(null);
         setLoading(true);
@@ -46,14 +46,14 @@ const App = () => {
     currentPositionWeather();
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange: (e: any) => void = (e: any) => {
     setQueryStringCountry("");
     const name = e.target.name;
     if (name === "queryStringCity") setQueryStringCity(e.target.value);
     if (name === "queryStringCountry") setQueryStringCountry(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit: (e: any) => void = (e: any) => {
     e.preventDefault();
     setErr(null);
     setLoading(true);
@@ -80,15 +80,15 @@ const App = () => {
     setQueryStringCountry("");
   };
 
-  const handleRadioChecked = (e) => {
+  const handleRadioChecked: (e: any) => void = (e: any) => {
     setUnitMeasure(e.target.value);
   };
 
   return (
     <div className="wrapper">
       <Header
-        title="Weather App"
-        subtitle="Check the weather before getting out of the house!"
+        title = "Weather App"
+        subtitle = "Check the weather before getting out of the house!"
       />
       <WeatherContext.Provider
         value={{

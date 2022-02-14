@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import WeatherContext from "../context/weatherContext";
 
-const WeatherCard = ({ dataCurrent, item }) => {
+const WeatherCard: ({ dataCurrent, item }: any) => JSX.Element = ({ dataCurrent, item }: any) => {
   const { unitMeasure } = useContext(WeatherContext);
 
-  const displayWeatherIcon = (iconId) => {
+  const displayWeatherIcon = (iconId: string) => {
     return (
       <img
         id="icon"
@@ -14,7 +14,7 @@ const WeatherCard = ({ dataCurrent, item }) => {
     );
   };
 
-  const displayDate = (date) => {
+  const displayDate: (date: string) => string = (date: string) => {
     const dateArray = new Date(date).toString().split(" ");
     const day = dateArray[0];
     const n = dateArray[2];
@@ -45,10 +45,10 @@ const WeatherCard = ({ dataCurrent, item }) => {
     }
   };
 
-  const convertCelsius = (temp) =>
+  const convertCelsius: (temp: number) => string = (temp: number) =>
     (Math.round((temp - 273.15) * 10) / 10).toFixed(1);
 
-  const convertFahrenheit = (celsius) =>
+  const convertFahrenheit: (temp: number) => string = (celsius: number) =>
     (Math.round((celsius * 1.8 + 32) * 10) / 10).toFixed(1);
 
   return (
@@ -76,13 +76,13 @@ const WeatherCard = ({ dataCurrent, item }) => {
                 <>
                   <span className="temp">
                     {convertFahrenheit(
-                      convertCelsius(dataCurrent.main.temp_max)
+                      parseFloat(convertCelsius(dataCurrent.main.temp_max))
                     )}
                     &deg;F
                   </span>
                   <span className="temp">
                     {convertFahrenheit(
-                      convertCelsius(dataCurrent.main.temp_min)
+                      parseFloat(convertCelsius(dataCurrent.main.temp_min))
                     )}
                     &deg;F
                   </span>
@@ -116,11 +116,11 @@ const WeatherCard = ({ dataCurrent, item }) => {
               ) : (
                 <>
                   <span className="temp">
-                    {convertFahrenheit(convertCelsius(item.main.temp_max))}
+                    {convertFahrenheit(parseFloat(convertCelsius(item.main.temp_max)))}
                     &deg;F
                   </span>
                   <span className="temp">
-                    {convertFahrenheit(convertCelsius(item.main.temp_min))}
+                    {convertFahrenheit(parseFloat(convertCelsius(item.main.temp_min)))}
                     &deg;F
                   </span>
                 </>

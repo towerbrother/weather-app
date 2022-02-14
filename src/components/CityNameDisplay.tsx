@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import WeatherContext from "./../context/weatherContext";
+import WeatherContext from "../context/weatherContext";
 
-const CityNameDisplay = () => {
+const CityNameDisplay: () => JSX.Element = () => {
   const { dataCurrent } = useContext(WeatherContext);
 
   return (
