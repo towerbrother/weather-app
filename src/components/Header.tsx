@@ -1,11 +1,7 @@
 import React from "react";
+import IHeader from "../interfaces/IHeader";
 
-type HeaderType = {
-  title: string,
-  subtitle: string
-};
-
-const Header: ({ title, subtitle }: HeaderType) => JSX.Element = ({ title, subtitle }: HeaderType) => (
+const Header: ({ title, subtitle }: IHeader) => JSX.Element = ({ title, subtitle }: IHeader) => (
   <div className="header">
     <div className="container">
       <h1 className="header__title">{title}</h1>

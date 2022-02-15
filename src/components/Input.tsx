@@ -1,7 +1,7 @@
 import React from "react";
-import ICustomInput from "../interfaces/ICustomInput";
+import IInput from "../interfaces/IInput";
 
-const Input: ({ id, label, ...props }: ICustomInput) => JSX.Element = ({ id, label, ...props }: ICustomInput) => (
+const Input: ({ id, label, ...props }: IInput) => JSX.Element = ({ id, label, ...props }: IInput) => (
   <label htmlFor={id}>
     {label && label}
     <input {...props} id={id} autoComplete="off" />

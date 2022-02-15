@@ -1,12 +1,8 @@
 import React from "react";
 import Radio from "./Radio";
+import IFooter from "../interfaces/IFooter";
 
-type FooterType = {
-  author: string,
-  url: string
-};
-
-const Footer: ({ url, author }: FooterType) => JSX.Element = ({ url, author }: FooterType) => (
+const Footer: ({ url, author }: IFooter) => JSX.Element = ({ url, author }: IFooter) => (
   <div className="footer">
     <div className="container">
       <h5 className="footer__text">
