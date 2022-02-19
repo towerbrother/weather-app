@@ -1,9 +1,4 @@
-import React, {
-  KeyboardEventHandler,
-  SyntheticEvent,
-  useEffect,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import Weather from "./Weather";
 import Error from "./Error";
