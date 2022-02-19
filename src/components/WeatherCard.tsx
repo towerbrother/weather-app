@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import WeatherContext from "../context/weatherContext";
 
-const WeatherCard: ({ dataCurrent, item }: any) => JSX.Element = ({ dataCurrent, item }: any) => {
+const WeatherCard: ({ dataCurrent, item }: any) => JSX.Element = ({
+  dataCurrent,
+  item,
+}: any) => {
   const { unitMeasure } = useContext(WeatherContext);
 
   const displayWeatherIcon = (iconId: string) => {
@@ -19,29 +22,26 @@ const WeatherCard: ({ dataCurrent, item }: any) => JSX.Element = ({ dataCurrent,
     const day = dateArray[0];
     const n = dateArray[2];
 
-    if (n === "01") {
-      return day + " " + n.slice(1, 2) + "st";
-    } else if (n === "21" || n === "31") {
-      return day + " " + n + "st";
-    } else if (n === "02") {
-      return day + " " + n.slice(1, 2) + "nd";
-    } else if (n === "22") {
-      return day + " " + n + "nd";
-    } else if (n === "03") {
-      return day + " " + n.slice(1, 2) + "rd";
-    } else if (n === "23") {
-      return day + " " + n + "rd";
-    } else if (
-      n === "04" ||
-      n === "05" ||
-      n === "06" ||
-      n === "07" ||
-      n === "08" ||
-      n === "09"
-    ) {
-      return day + " " + n.slice(1, 2) + "th";
-    } else {
-      return day + " " + n + "th";
+    switch (n) {
+      case "01":
+      case "02":
+      case "03":
+      case "04":
+      case "05":
+      case "06":
+      case "07":
+      case "08":
+      case "09":
+        return `${day} ${n.slice(1, 2)}${
+          n === "01" ? "st" : n === "02" ? "nd" : n === "03" ? "rd" : "th"
+        }`;
+      case "21":
+      case "31":
+      case "22":
+      case "23":
+        return `${day} ${n}${n === "22" ? "nd" : n === "23" ? "rd" : "st"}`;
+      default:
+        return `${day} ${n}th`;
     }
   };
 
@@ -116,11 +116,15 @@ const WeatherCard: ({ dataCurrent, item }: any) => JSX.Element = ({ dataCurrent,
               ) : (
                 <>
                   <span className="temp">
-                    {convertFahrenheit(parseFloat(convertCelsius(item.main.temp_max)))}
+                    {convertFahrenheit(
+                      parseFloat(convertCelsius(item.main.temp_max))
+                    )}
                     &deg;F
                   </span>
                   <span className="temp">
-                    {convertFahrenheit(parseFloat(convertCelsius(item.main.temp_min)))}
+                    {convertFahrenheit(
+                      parseFloat(convertCelsius(item.main.temp_min))
+                    )}
                     &deg;F
                   </span>
                 </>
