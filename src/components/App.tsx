@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  KeyboardEventHandler,
+  SyntheticEvent,
+  useEffect,
+  useState,
+} from "react";
 import Form from "./Form";
 import Weather from "./Weather";
 import Error from "./Error";
@@ -46,14 +51,16 @@ const App: () => JSX.Element = () => {
     currentPositionWeather();
   }, []);
 
-  const handleChange: (e: any) => void = (e: any) => {
+  const handleChange = (e: {
+    target: { name: string; value: React.SetStateAction<string> };
+  }) => {
     setQueryStringCountry("");
     const name = e.target.name;
     if (name === "queryStringCity") setQueryStringCity(e.target.value);
     if (name === "queryStringCountry") setQueryStringCountry(e.target.value);
   };
 
-  const handleSubmit: (e: any) => void = (e: any) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setErr(null);
     setLoading(true);
@@ -80,15 +87,17 @@ const App: () => JSX.Element = () => {
     setQueryStringCountry("");
   };
 
-  const handleRadioChecked: (e: any) => void = (e: any) => {
+  const handleRadioChecked = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setUnitMeasure(e.target.value);
   };
 
   return (
     <div className="wrapper">
       <Header
-        title = "Weather App"
-        subtitle = "Check the weather before getting out of the house!"
+        title="Weather App"
+        subtitle="Check the weather before getting out of the house!"
       />
       <WeatherContext.Provider
         value={{
