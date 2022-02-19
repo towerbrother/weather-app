@@ -3,12 +3,8 @@ import Input from "./Input";
 import WeatherContext from "../context/weatherContext";
 
 const Form: () => JSX.Element = () => {
-  const {
-    queryStringCity,
-    queryStringCountry,
-    handleChange,
-    handleSubmit,
-  } = useContext(WeatherContext);
+  const { queryStringCity, queryStringCountry, handleChange, handleSubmit } =
+    useContext(WeatherContext);
 
   return (
     <div className="form">

@@ -15,7 +15,6 @@ const App: () => JSX.Element = () => {
   const [dataCurrent, setDataCurrent] = useState<any>(null);
   const [dataForecast, setDataForecast] = useState<any>(null);
   const [unitMeasure, setUnitMeasure] = useState<string>("metric");
-  // these two could become a single custom hook
   const [queryStringCity, setQueryStringCity] = useState<string>("");
   const [queryStringCountry, setQueryStringCountry] = useState<string>("");
 
