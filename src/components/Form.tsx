@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
 import Input from "./Input";
-import WeatherContext from "./../context/weatherContext";
+import WeatherContext from "../context/weatherContext";
 
-const Form = () => {
-  const {
-    queryStringCity,
-    queryStringCountry,
-    handleChange,
-    handleSubmit,
-  } = useContext(WeatherContext);
+const Form: () => JSX.Element = () => {
+  const { queryStringCity, queryStringCountry, handleChange, handleSubmit } =
+    useContext(WeatherContext);
 
   return (
     <div className="form">
@@ -16,6 +12,7 @@ const Form = () => {
         <div className="input-container">
           <Input
             aria-label="city"
+            label=""
             id="city"
             type="text"
             name="queryStringCity"
@@ -25,6 +22,7 @@ const Form = () => {
           />
           <Input
             aria-label="country"
+            label=""
             id="country"
             type="text"
             name="queryStringCountry"

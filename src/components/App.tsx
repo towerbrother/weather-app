@@ -5,22 +5,21 @@ import Error from "./Error";
 import LoadingPage from "./LoadingPage";
 import Footer from "./Footer";
 import Header from "./Header";
-import WeatherContext from "./../context/weatherContext";
+import WeatherContext from "../context/weatherContext";
 import { getWeatherData, getInitialWeatherData } from "../utils/utils";
-import { CURRENT, FORECAST } from "./../utils/constants";
+import { CURRENT, FORECAST } from "../utils/constants";
 
-const App = () => {
-  const [err, setErr] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [dataCurrent, setDataCurrent] = useState(null);
-  const [dataForecast, setDataForecast] = useState(null);
-  const [unitMeasure, setUnitMeasure] = useState("metric");
-  // these two could become a single custom hook
-  const [queryStringCity, setQueryStringCity] = useState("");
-  const [queryStringCountry, setQueryStringCountry] = useState("");
+const App: () => JSX.Element = () => {
+  const [err, setErr] = useState<boolean | null | Response>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [dataCurrent, setDataCurrent] = useState<any>(null);
+  const [dataForecast, setDataForecast] = useState<any>(null);
+  const [unitMeasure, setUnitMeasure] = useState<string>("metric");
+  const [queryStringCity, setQueryStringCity] = useState<string>("");
+  const [queryStringCountry, setQueryStringCountry] = useState<string>("");
 
   useEffect(() => {
-    const currentPositionWeather = async () => {
+    const currentPositionWeather: () => Promise<void> = async () => {
       navigator.geolocation.getCurrentPosition((position) => {
         setErr(null);
         setLoading(true);
@@ -46,14 +45,16 @@ const App = () => {
     currentPositionWeather();
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: {
+    target: { name: string; value: React.SetStateAction<string> };
+  }) => {
     setQueryStringCountry("");
     const name = e.target.name;
     if (name === "queryStringCity") setQueryStringCity(e.target.value);
     if (name === "queryStringCountry") setQueryStringCountry(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setErr(null);
     setLoading(true);
@@ -80,7 +81,9 @@ const App = () => {
     setQueryStringCountry("");
   };
 
-  const handleRadioChecked = (e) => {
+  const handleRadioChecked = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setUnitMeasure(e.target.value);
   };
 

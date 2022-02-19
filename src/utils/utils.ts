@@ -1,12 +1,12 @@
 import { fetchData, fetchInitialData } from "./fetch";
 
 export const getWeatherData = async (
-  content,
-  queryStringCity,
-  queryStringCountry,
-  callbackData,
-  callbackError,
-  callbackLoading
+  content: string,
+  queryStringCity: string,
+  queryStringCountry: string,
+  callbackData: React.Dispatch<React.SetStateAction<null>>,
+  callbackError: React.Dispatch<React.SetStateAction<boolean | null | Response>>,
+  callbackLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const response = await fetchData(
     content,
@@ -24,12 +24,12 @@ export const getWeatherData = async (
 };
 
 export const getInitialWeatherData = async (
-  content,
-  lat,
-  lon,
-  callbackData,
-  callbackError,
-  callbackLoading
+  content: string,
+  lat: number,
+  lon: number,
+  callbackData: React.Dispatch<React.SetStateAction<null>>,
+  callbackError: React.Dispatch<React.SetStateAction<boolean | null | Response>>,
+  callbackLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const response = await fetchInitialData(
     content,

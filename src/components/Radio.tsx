@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Input from "./Input";
-import WeatherContext from "./../context/weatherContext";
+import WeatherContext from "../context/weatherContext";
 
-const Radio = () => {
+const Radio: () => JSX.Element = () => {
   const { unitMeasure, handleRadioChecked } = useContext(WeatherContext);
 
   return (
