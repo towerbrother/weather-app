@@ -13,7 +13,7 @@ The app has been build as learning opportunity during my path to become a Softwa
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and built using the following technologies:
 
 - React (incl. Hooks)
-- Javascript
+- Typescript
 - SASS
 
 ## Features
@@ -30,7 +30,3 @@ Data fetched using [OpenWeatherMap API](https://openweathermap.org/api) with a f
 
 - Current weather data [documentation](https://openweathermap.org/current)
 - 5 day / 3 hour forecast [documentation](https://openweathermap.org/forecast5)
-
-## Credits
-
-I have been receiving a lot of support and motivation from the Codecademy London (UK) Meetup group, in particular from [Giacomo Sorbi](https://github.com/GiacomoSorbi) to whom I am particularly thankful. Grazie! :grinning:
