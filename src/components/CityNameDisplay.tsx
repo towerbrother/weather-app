@@ -7,7 +7,7 @@ const CityNameDisplay: () => JSX.Element = () => {
   return (
     <div>
       <h1 className="city-name">
-        {`${dataCurrent.name}, ${dataCurrent.sys.country}`}
+        {`${dataCurrent.city}, ${dataCurrent.country}`}
       </h1>
     </div>
   );

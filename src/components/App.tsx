@@ -6,14 +6,16 @@ import LoadingPage from "./LoadingPage";
 import Footer from "./Footer";
 import Header from "./Header";
 import WeatherContext from "../context/weatherContext";
+import IError from "../interfaces/IError";
+import { IWeather } from "../interfaces/IWeather";
 import { getWeatherData, getInitialWeatherData } from "../utils/utils";
 import { CURRENT, FORECAST } from "../utils/constants";
 
 const App: () => JSX.Element = () => {
-  const [err, setErr] = useState<boolean | null | Response>(null);
+  const [err, setErr] = useState<IError | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [dataCurrent, setDataCurrent] = useState<any>(null);
-  const [dataForecast, setDataForecast] = useState<any>(null);
+  const [dataCurrent, setDataCurrent] = useState<IWeather | null>(null);
+  const [dataForecast, setDataForecast] = useState<IWeather | null>(null);
   const [unitMeasure, setUnitMeasure] = useState<string>("metric");
   const [queryStringCity, setQueryStringCity] = useState<string>("");
   const [queryStringCountry, setQueryStringCountry] = useState<string>("");
@@ -95,6 +97,7 @@ const App: () => JSX.Element = () => {
       />
       <WeatherContext.Provider
         value={{
+          err,
           dataCurrent,
           dataForecast,
           queryStringCity,
@@ -108,7 +111,7 @@ const App: () => JSX.Element = () => {
         <div className="App">
           <div className="container">
             <Form />
-            {err && <Error err={err} />}
+            {err && <Error />}
             {loading ? (
               <LoadingPage />
             ) : (
